@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Cap,Anton,104,&H00FFFFFF,&H00FFFFFF,&H00140A03,&H96000000,0,0,0,0,100,100,2,0,1,10,5,5,60,60,0,1
+Style: Hook,Anton,118,&H00FFFFFF,&H00FFFFFF,&H00140A03,&H96000000,0,0,0,0,100,100,2,0,1,12,6,5,50,50,0,1
+Style: Tag,Anton,84,&H00140A03,&H00140A03,&H0050B0F2,&H0050B0F2,0,0,0,0,100,100,4,0,3,18,0,5,50,50,0,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text

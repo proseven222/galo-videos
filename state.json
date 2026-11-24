@@ -1,6 +1,6 @@
 {
  "next_video": 11,
- "next_publish_date": "2026-12-03",
+ "next_publish_date": "2026-11-27",
  "timezone": "Europe/Lisbon",
  "publish_time": "18:00",
  "buffer_channel_id": "6b059f178541f09ecb8a802e",
@@ -28,5 +28,5 @@
   "url": "https://claude.ai/artifact/94adzXiipLdqhnysnWTHEZ",
   "posts_file": "dashboard/posts.json"
  },
- "notes": "Vídeos 2-7 (prontos do utilizador) foram agendados e depois retirados a 24/11: o utilizador agenda-os à mão às 11:00 para 27/11-02/12. Por isso a automática continua em 03/12."
+ "notes": "A partir de 27/11 18:00 a tarefa diária agenda um vídeo por dia (vídeo 11 em 27/11, 12 em 28/11, ...). O utilizador já não tem vídeos agendados a partir dessa data."
 }

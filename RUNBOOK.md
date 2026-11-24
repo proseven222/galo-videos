@@ -108,5 +108,5 @@ Dizer: vídeo produzido (número e tema), gancho usado e estilo, data/hora agend
 ## Anexo — exemplo completo (vídeo 10)
 `tools/examples/v10/story_draft.json` e `tools/examples/v10/config.json` são o par história+configuração do vídeo 10, usado como modelo. Notas aprendidas: o plano `landscape` com um único `banners` central parece uma bandeira estranha (preferir 2 banners laterais ou nenhum); o contador só funciona bem com número ≥ 100; o loudnorm + limitador deixa a sonoridade em torno de -15 LUFS, que é aceitável.
 
-## Nota — vídeos prontos do utilizador
-Os vídeos 2–7 (ficheiros do utilizador, já com a marca, em `videos/`) foram agendados e retirados a 24/11: o utilizador agenda-os à mão no TikTok às 11:00 entre 27/11 e 02/12. Por isso `next_publish_date` = 2026-12-03 e `next_video` = 11. Se o utilizador trouxer mais vídeos prontos: aplicar `alimiter` ao áudio se o pico passar de -1,5 dBFS, copiar para `videos/`, agendar no Buffer, registar em `dashboard/posts.json` e `state.json`, e avançar `next_publish_date`. O Buffer só aceita 10 posts agendados em simultâneo.
+## Nota — datas
+A 24/11 o utilizador confirmou que a partir de 27/11 às 18:00 não tem mais nada agendado: a tarefa diária começa aí (vídeo 11 → 27/11, vídeo 12 → 28/11, e assim por diante, um por dia). Os ficheiros `videos/galo_*_v02..v07.mp4` são vídeos prontos do utilizador, não os voltes a agendar.

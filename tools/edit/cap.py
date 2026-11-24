@@ -29,7 +29,8 @@ for k,w in enumerate(words):
     if re.search(r'[.,:?!]$',w[0]) or nxt-w[2]>0.12: flush()
 flush()
 hdr=open(os.path.join(HERE,'ass_header.txt'),encoding='utf-8').read()
-ACT='&H0000C4FF&'; ev=[]
+ACT='&H0000C4FF&'; RED='&H003C3CFF&'; ev=[]
+ALERT=set(norm(x) for x in CFG.get('alert_words',[]))   # palavras de perigo/choque -> vermelho
 isnum=lambda s: re.search(r'\d',s) is not None
 for ui,u in enumerate(units):
     nxt=units[ui+1][0][1] if ui+1<len(units) else 1e9
@@ -39,7 +40,8 @@ for ui,u in enumerate(units):
         for j,x in enumerate(u):
             c=clean(x[0])
             if isnum(c): c="{\\fs128\\1c"+ACT+"}"+c+"{\\fs104\\1c&HFFFFFF&}"
-            parts.append(("{\\1c"+ACT+"}"+c+"{\\1c&HFFFFFF&}") if j==k and not isnum(c) else c)
+            col=RED if norm(x[0]) in ALERT else ACT
+            parts.append(("{\\1c"+col+"}"+c+"{\\1c&HFFFFFF&}") if j==k and not isnum(c) else c)
         big=isnum(clean(u[k][0]))
         pop="{\\an5\\pos(540,1290)"+("\\fscx82\\fscy82\\t(0,110,\\fscx100\\fscy100)" if k==0 or big else "")+"}"
         ev.append(f"Dialogue: 1,{T(s)},{T(en2)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
@@ -85,14 +87,15 @@ for i,(s0,tx,d,k) in enumerate(TAGS):
     print(f"tag {s0:.2f}-{e0:.2f} {tx!r} {k}")
 os.makedirs(OUT,exist_ok=True)
 open(os.path.join(OUT,'caps.ass'),'w',encoding='utf-8').write(hdr+"\n".join(ev)+"\n")
-# ── zooms (interrupções de padrão, no maximo 4.2 s entre eles) ──
+# ── zooms (interrupções de padrão, por omissao no maximo 3.0 s entre eles; config punch_gap) ──
 key=set(norm(x) for x in CFG.get('keywords',[]))
 P=[w[1] for w in words if norm(w[0]) in key]+[s for s,k in shown]
+GAP=float(CFG.get('punch_gap',3.0))
 allp=sorted(set([3.2]+CUTS+P)); fill=[]; ws_st=[w[1] for w in words]
 for _ in range(6):
     allp=sorted(set(allp+fill)); added=False
     for a,b in zip(allp,allp[1:]+[DUR]):
-        if b-a>4.2:
+        if b-a>GAP:
             mid=a+(b-a)/2; fill.append(min(ws_st,key=lambda x:abs(x-mid))); added=True
     if not added: break
 punch=sorted(set(P+fill)); punch=[p for p in punch if p>3.7 and all(abs(p-c)>0.5 for c in CUTS)]
@@ -100,9 +103,10 @@ pr=[]
 for p in punch:
     if not pr or p-pr[-1]>=1.8: pr.append(p)
 punch=pr
-json.dump({'punch':punch,'tags':shown,'cuts':CUTS,'dur':DUR,'counter':bool(C),'words':[(w[0],w[1],w[2]) for w in words],'sfx':CFG.get('sfx',[]),'music':CFG.get('music','dark'),'drums':CFG.get('drums',[])},open(os.path.join(OUT,'punch.json'),'w'))
+json.dump({'punch':punch,'tags':shown,'cuts':CUTS,'dur':DUR,'counter':bool(C),'words':[(w[0],w[1],w[2]) for w in words],'sfx':CFG.get('sfx',[]),'music':CFG.get('music','dark'),'drums':CFG.get('drums',[]),'loops':CFG.get('loops',[]),'loop_end':CFG.get('loop_end',True)},open(os.path.join(OUT,'punch.json'),'w'))
 br="gte(t,0)*0.3*exp(-max(0\\,t-0)*16)+gte(t,1.45)*0.2*exp(-max(0\\,t-1.45)*16)"
 for c in CUTS: br+=f"+gte(t,{c})*0.18*exp(-max(0\\,t-{c})*16)"
+if CFG.get('loop_end',True): br+=f"+gte(t,{DUR-0.35:.2f})*0.28*(t-{DUR-0.35:.2f})/0.35"   # flash a subir no fim -> liga ao flash do frame 0 (loop)
 zz="0.05*exp(-t*6)"+"".join(f"+gte(t,{p:.2f})*0.045*exp(-max(0\\,t-{p:.2f})*7)" for p in punch)
 fc=f"""[0:v]scale=w='2*trunc(1080*(1+{zz})/2)':h=-2:eval=frame,crop=1080:1920,eq=brightness='{br}':eval=frame,ass=caps.ass,format=yuv420p[b];
 [4:v]scale=170:-1,format=rgba,colorchannelmixer=aa=0.55[wm];

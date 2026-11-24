@@ -7,7 +7,8 @@ FN={'womp':lambda: womp(),'gavel':lambda: gavel(1.0),'rumble':lambda: rumble(3.0
  'belllo':lambda: bell(262,3.0,0.3),'thunder':lambda: thunder(3.0,1.0),'crack':lambda: crack(1.0),'boom':lambda: boom(1.2,100,32),'riser':lambda: riser(1.5)*0.5,
  'pop':lambda: pop(0.8),'horn':lambda: horn(1.4,110),'cannon':lambda: cannon(),'explosion':lambda: explosion(),'splash':lambda: splash(),'door':lambda: door(),
  'zap':lambda: zap(1.4,1.0),'rain':lambda: rain(4.0,0.5),'tinkle':lambda: np.zeros(10),'rustle':lambda: rustle(0.6),'step':lambda: step(1.0),'clack':lambda: clack(1.0),
- 'thump':lambda: thump(0.5,70,1.0),'press':lambda: press(1.0),'stab':lambda: stab2(1.0),'emu':lambda: emu_call(1.0,82),'gun':lambda: gun(),'crackle':lambda: crackle(2.0)*0.6}
+ 'thump':lambda: thump(0.5,70,1.0),'press':lambda: press(1.0),'stab':lambda: stab2(1.0),'emu':lambda: emu_call(1.0,82),'gun':lambda: gun(),'crackle':lambda: crackle(2.0)*0.6,
+ 'crow':lambda: crow(1.0),'bubbles':lambda: bubbles(1.4,1.0),'cough':lambda: cough(1.0),'clocktick':lambda: clocktick(1.0),'heartbeat':lambda: heartbeat(1.0),'pizz':lambda: pizz(392,1.0),'chime':lambda: chime(1.0)}
 def stab2(g=1.0):
     d=1.6;t=tt(d); s=0
     for f in (196,246.9,293.7): s=s+np.sin(2*np.pi*f*t)*np.exp(-t*2.0)
@@ -19,9 +20,11 @@ wind*=np.interp(t,np.linspace(0,DUR,9),[0.03,0.05,0.07,0.06,0.08,0.06,0.05,0.04,
 add(wind,0,1.0,0)
 # música sintetizada (3 ambientes)
 M=PJ.get('music','dark')
-SET={'dark':dict(bpm=72,chords=[[146.83,174.61,220.0],[116.54,146.83,174.61],[98.0,116.54,146.83],[110.0,138.59,164.81]],drum=1,pluck=1),
+SET={'tense':dict(bpm=92,chords=[[110.0,130.81,164.81],[87.31,110.0,130.81],[73.42,87.31,110.0],[82.41,103.83,123.47]],drum=1,pluck=1),
+     'quirky':dict(bpm=104,chords=[[130.81,164.81,196.0],[98.0,123.47,146.83],[110.0,130.81,164.81],[87.31,110.0,130.81]],drum=0,pluck=1),
+     'dark':dict(bpm=72,chords=[[146.83,174.61,220.0],[116.54,146.83,174.61],[98.0,116.54,146.83],[110.0,138.59,164.81]],drum=1,pluck=1),
      'mystic':dict(bpm=60,chords=[[110.0,130.81,164.81],[98.0,123.47,146.83],[87.31,110.0,130.81],[98.0,116.54,146.83]],drum=0,pluck=1),
-     'warm':dict(bpm=84,chords=[[130.81,164.81,196.0],[110.0,138.59,164.81],[87.31,110.0,130.81],[98.0,123.47,146.83]],drum=0,pluck=1)}[M if M in ('dark','mystic','warm') else 'dark']
+     'warm':dict(bpm=84,chords=[[130.81,164.81,196.0],[110.0,138.59,164.81],[87.31,110.0,130.81],[98.0,123.47,146.83]],drum=0,pluck=1)}[M if M in ('dark','mystic','warm','tense','quirky') else 'dark']
 bpm=SET['bpm']; beat=60/bpm; bar=4*beat; chords=SET['chords']
 mus=np.zeros(N); nb=int(DUR/bar)+2
 for b in range(nb):
@@ -69,6 +72,13 @@ for s0,k in PJ['tags']:
 for dw in PJ.get('drums',[]):            # [{"from":13.4,"to":20}] tambor a acelerar
     tm=dw['from']; gap=0.5
     while tm<dw['to']: add(thump(0.35,75,0.55),tm,1,0.0); gap=max(0.22,gap*0.94); tm+=gap
+# motivos repetidos (por video): [{"kind":"clocktick","from":5,"to":12,"every":0.5,"accel":0.97,"min":0.2,"gain":0.5}]
+for lp_ in PJ.get('loops',[]):
+    f=FN.get(lp_['kind'])
+    if f is None: print('loop desconhecido',lp_['kind']); continue
+    tm=lp_['from']; gap=lp_.get('every',0.5)
+    while tm<lp_['to']:
+        add(f(),tm,lp_.get('gain',0.5),0.0); gap=max(lp_.get('min',0.2),gap*lp_.get('accel',1.0)); tm+=gap
 # efeitos de momento (do config): [{"at":t,"kind":"womp","gain":0.9}]
 for e in PJ.get('sfx',[]):
     f=FN.get(e['kind'])
@@ -78,6 +88,8 @@ for e in PJ.get('sfx',[]):
 # CTA final: sino + pops
 tc=[w[1] for w in PJ['words'] if w[0].upper().startswith('SIGA')]
 tc=tc[-1] if tc else DUR-2.5
-add(bell(1568,2.4,0.3),tc,1,-0.1); add(pop(0.8),tc+0.05,1,0.2); add(pop(0.7),tc+0.9,1,-0.2); add(boom(1.0,110,38)*0.5,tc,1.0)
+add(bell(1568,2.4,0.3),tc,1,-0.1); add(crow(0.8),tc+0.55,0.55,0.0); add(pop(0.8),tc+0.05,1,0.2); add(pop(0.7),tc+0.9,1,-0.2); add(boom(1.0,110,38)*0.5,tc,1.0)
+# loop: tensao a subir no fim que desagua na batida do frame 0
+if PJ.get('loop_end',True): add(riser(0.5)*0.6,DUR-0.55,0.6); add(thump(0.35,80,0.7),DUR-0.06,0.7)
 Mx=np.stack([L,R],1); Mx=np.tanh(Mx/2.5)*2.5; pk=np.abs(Mx).max(); Mx=Mx/pk*0.8
 wf.write('sfx.wav',SR,(Mx*32767).astype(np.int16)); print('sfx ok',round(pk,2))

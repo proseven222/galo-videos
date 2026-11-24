@@ -117,3 +117,46 @@ def zap(d=1.4,g=1.0):
 def formant(x,f,bw,g=1.0):
     return bp(x,max(50,f-bw),f+bw,2)*g
 
+
+# ===== efeitos novos (v2) =====
+def crow(g=1.0):
+    """cocorico estilizado: harmonicos com contorno de tom + formantes (subtil, marca do Galo)"""
+    d=1.25; t=tt(d)
+    kf=[(0,430),(0.10,650),(0.17,540),(0.27,720),(0.34,600),(0.50,860),(0.85,700),(1.1,420),(d,330)]
+    f=np.interp(t,[a for a,_ in kf],[b for _,b in kf])*(1+0.012*np.sin(2*np.pi*27*t))
+    ph=2*np.pi*np.cumsum(f)/SR; src=0
+    for k in range(1,14): src=src+np.sin(k*ph)/k**1.05
+    src=src+0.06*noise(d)
+    amp=np.minimum(t/0.02,1)*np.exp(-np.maximum(t-0.85,0)*5)
+    for c in (0.16,0.30): amp=amp*(1-0.75*np.exp(-((t-c)/0.018)**2))   # silabas
+    y=(bp(src,700,1100)*1.0+bp(src,1800,3000)*0.7+0.25*src)*amp
+    y=lp(y,6000); y=y/np.abs(y).max()
+    return y*0.5*g
+def bubbles(d=1.4,g=1.0):
+    out=np.zeros(int(d*SR)); n=int(d*9)
+    for i in range(n):
+        t0=rng.uniform(0,d-0.2); k=tt(0.14); f0=rng.uniform(260,520)
+        b=np.sin(2*np.pi*(f0*(1+3*k))*k)*np.exp(-k*28)
+        i0=int(t0*SR); out[i0:i0+len(k)]+=b[:len(out)-i0]*rng.uniform(0.4,0.9)
+    return lp(out,2500)*0.5*g
+def cough(g=1.0):
+    out=np.zeros(int(0.7*SR))
+    for t0,a in ((0.0,1.0),(0.22,0.8)):
+        k=tt(0.18); b=bp(noise(0.18),350,1600)*np.exp(-k*14)*np.minimum(k/0.01,1)
+        b=b+0.5*np.sin(2*np.pi*(180-60*k)*k)*np.exp(-k*16)
+        i0=int(t0*SR); out[i0:i0+len(k)]+=b*a
+    return out*0.5*g
+def clocktick(g=1.0):
+    k=tt(0.35); a=bp(noise(0.35),2500,6000)*np.exp(-k*90); b=np.sin(2*np.pi*1500*k)*np.exp(-k*60)*0.4
+    return (a+b)*0.5*g
+def heartbeat(g=1.0):
+    k=tt(0.9); y=np.zeros(len(k))
+    for t0,a in ((0.0,1.0),(0.28,0.7)):
+        i0=int(t0*SR); kk=tt(0.3); y[i0:i0+len(kk)]+=np.sin(2*np.pi*(62-18*kk)*kk)*np.exp(-kk*14)*a
+    return y*0.9*g
+def pizz(f=392,g=1.0):
+    k=tt(0.6); y=sum(np.sin(2*np.pi*f*m*k)*np.exp(-k*(7+4*m))/m for m in (1,2,3,4))
+    return y*np.minimum(k/0.003,1)*0.35*g
+def chime(g=1.0):
+    k=tt(2.0); y=sum(np.sin(2*np.pi*f*k)*np.exp(-k*(2.5+i))*a for i,(f,a) in enumerate(((1760,1),(2349,0.6),(3136,0.4),(3951,0.25))))
+    return y*np.minimum(k/0.004,1)*0.3*g

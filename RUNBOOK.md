@@ -13,7 +13,7 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 ## 1. Preparação (sessão nova)
 1. `add_repo` `proseven222/galo-videos` com `access: push`, clonar para `/home/claude/galo-videos` (clone raso, timeout longo) e `register_repo_root`.
 2. `bash tools/setup.sh` (copia o kit para `/home/claude/kit`, que é o caminho fixo usado pelos scripts).
-3. Ler `state.json` e `learnings.md`.
+3. Ler `state.json` e `learnings.md`, incluindo o **"Caderno de Regras Ativas"** (R1–R5, atualizado pela auditoria semanal de domingo): aplica-as todas ao vídeo do dia (ver 3.1, 3.3, 3.5 e 4.3) e regista em "Experiências" que regras estás a testar.
 
 ## 2. Ler resultados e aprender (se houver posts publicados)
 - Buffer: `get_account` (organização), `list_posts` com `status:["sent"]`, `includeMetrics:true`, canal `6b059f178541f09ecb8a802e` (TikTok `ogalosabetudo`). Se as métricas não vierem (falta de permissão), registar isso e seguir.
@@ -35,7 +35,7 @@ Escrever `$W/story_draft.json` com `{"seed":N*10+1,"shots":[...]}`; cada plano c
 python3 tools/edit/retime.py $W/align.json $W/story_draft.json /home/claude/kit/stories/vNN.json
 ```
 Ver exemplos reais em `tools/kit/stories/v05n..v09n.json` (e `/home/claude/kit/stories/v10.json` se existir). Vocabulário:
-- Plano 1 leva `"slam":"<ícone>"` (carimbo gigante do ícone no gancho).
+- Plano 1 leva `"slam":"<ícone>"` (carimbo gigante do ícone no gancho). **R1:** o plano 1 mostra "a coisa" (objeto/animal/número) logo no início, nunca paisagem vazia; se a história tem um animal (pig, mule, snake, rooster), esse animal é o ícone do `slam` e do `closeup` do plano 1.
 - `tpl`: `landscape` (céu/terreno, `actors`, `props`, `banners`, `birds`, `fire`, `rain`, `snow`, `smoke`...), `interior` (`kind`:hall/archive..., `table`, `items`, `actors`, `fore`), `closeup` (`icons`:[{n,x,y,s}], `below` atores), `map` (`land`:[{n:"island",x,y,w,h}], `pins`, `routes`, `waves`, `dots`), `sea`, `tunnel`.
 - `cam`: push, pull, panL, panR, tiltUp, tiltDown, orbit, drift. Alternar câmaras e templates entre planos seguidos.
 - `tod`: day, dusk, night, gold, grey, storm, dawn, fire. `sky`: castle, city, dunes, forest, huts, jungle, monastery, mountains, port, ruins, tower, village, volcano, plain. `gnd`: sand, mud, stone...
@@ -69,12 +69,13 @@ Não imprimir os logs de render com `tail` (usam `\r`); verificar com `ls out/do
  "drums":[{"from":25.0,"to":33.0}],              // opcional: tambor que acelera
  "alert_words":["guerra","cólera"],              // opcional: palavras de perigo/choque, a vermelho nas legendas (2–5 por vídeo)
  "loops":[{"kind":"clocktick","from":6,"to":14,"every":0.5,"accel":0.98,"min":0.25,"gain":0.35}],  // opcional: MOTIVO SONORO próprio do vídeo, repetido num trecho
- "punch_gap":3.0,                                 // opcional: máx. segundos entre zooms de impacto (omissão 3.0; baixar para 2.5 em vídeos lentos)
+ "punch_gap":2.0,                                 // máx. segundos entre zooms de impacto. REGRA R2: pôr SEMPRE 2.0 nos vídeos novos (omissão do código é 3.0, só vale para vídeos antigos); 2.5 só se ficar cansativo
  "loop_end":true}                                 // omissão true: flash+tensão no último 0,35 s que desagua no frame 0 (loop)
 ```
+- **R5 (teste de som):** cada etiqueta `kind:"p"` ganha um `sfx` `stab` ou `chime` (gain 0.5–0.7) no mesmo instante (segundo da palavra da etiqueta, impresso pelo `cap.py`) e cada `kind:"t"` ganha um `riser` ~1,2 s antes. Não mexer na música nem nos `loops` do motivo próprio.
 - `tags` (3–7): etiquetas de dados/ano/virada ao longo do vídeo. `kind`: `d` dado, `t` teaser (cria tensão antes da revelação), `p` payoff (revelação). O CTA "SIGA PARA A PRÓXIMA HISTÓRIA IMPROVÁVEL" é acrescentado sozinho.
 - `at.word`: a palavra como aparece nas legendas (números por extenso viram algarismos: "mil oitocentos e cinquenta e nove" → `1859`, "quatrocentos e sessenta e um" → `461`; pontuação final conta, ex. `morreu.`/`pequena?`). Se a palavra não existir, o script lista as disponíveis.
-- Gancho: tem de ser forte, polémico ou criativo nos primeiros 3 s (ver `learnings.md` para estilos e o que está a funcionar).
+- Gancho: tem de ser forte, polémico ou criativo nos primeiros 3 s (ver `learnings.md` para estilos e o que está a funcionar). **R3:** além de A–D há os estilos **E** (origem sombria de objeto comum) e **F** (pergunta prática "Como sobreviviam a…?"), só quando a narração sustenta o facto; entram no A/B a cada 3 vídeos.
 - `sfx.kind` possíveis (novos: crow, bubbles, cough, clocktick, heartbeat, pizz, chime): womp, gavel, rumble, bell, bellhi, belllo, thunder, crack, boom, riser, pop, horn, cannon, explosion, splash, door, zap, rain, rustle, step, clack, thump, press, stab, gun, crackle.
 - `music`: dark (tensão/guerra), mystic (lenda/mistério), warm (curiosidade leve), tense (pizzicato investigativo, suspense rápido), quirky (absurdo/cómico).
 - **Marca do Galo**: o CTA final já inclui um cocorico sintetizado subtil. Não o remover.
@@ -86,7 +87,8 @@ Cada vídeo ganha 1 "assinatura" que o torna diferente do anterior, sempre dentr
 3. **Um mood de música** que combine com o tema (não repetir o mesmo 3 vezes seguidas).
 4. **2–5 `alert_words`** a vermelho (o absurdo/perigo); as datas/números ficam a âmbar (já automático).
 5. Regra dos 2,5 s: nada fica parado mais de ~2,5 s. Como o render tem 8 planos animados, as interrupções vêm de zooms (`punch_gap` 3.0 por omissão), etiquetas, contadores, flash e SFX; se um plano durar >7 s sem evento novo, acrescenta uma `tag` ou um `sfx`.
-6. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`).
+6. Cadência R2: `punch_gap` 2.0 e um evento novo (zoom, etiqueta, SFX, câmara) a cada ~2 s.
+7. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`).
 Antes de montar, escreve uma linha em `learnings.md` (secção "Experiências"): o que vais testar neste vídeo (gancho, motivo, mood).
 
 ### 3.4 Montagem final
@@ -98,7 +100,7 @@ Verificar (obrigatório): extrair fotogramas em 0.3 s, 1.9 s, 3.0 s, meio e fim 
 ## 4. Publicar e agendar
 1. Escolher o nome: `videos/galo_<slug>_vNN.mp4` (slug curto sem acentos). Copiar `$W/final.mp4`.
 2. `git add`, commit, `git -c push.negotiate=true push origin main`. URL público: `https://raw.githubusercontent.com/proseven222/galo-videos/main/videos/<ficheiro>`.
-3. Descrição PT-BR (partir de `scripts/ptbr_all.json`, item com `id` = N, campo `desc`; adaptar à narração final): linha de gancho com emoji, 1–2 linhas de contexto com factos da narração, pergunta + 👇, `Siga para a próxima história improvável! 🐔`, 7 hashtags (incluir #historia #curiosidades #paravoce #fyp #historiasimprovaveis + 2 do tema), linha em branco e `⚠️ Vídeo feito com IA.`
+3. Descrição PT-BR (partir de `scripts/ptbr_all.json`, item com `id` = N, campo `desc`; adaptar à narração final): linha de gancho com emoji, 1–2 linhas de contexto com factos da narração, pergunta + 👇, `Siga para a próxima história improvável! 🐔`, 9 hashtags (regra R4: #historia #curiosidades #paravoce #fyp #historiasimprovaveis #foryou #viral + 2 do tema), linha em branco e `⚠️ Vídeo feito com IA.`
 4. Buffer `create_post`: `channelId` `6b059f178541f09ecb8a802e`, `schedulingType:"automatic"`, `mode:"customScheduled"`, `dueAt` = `state.next_publish_date` + `T18:00:00` com o desvio de Lisboa dessa data (UTC+00:00 no inverno, +01:00 no horário de verão; confirmar com `get_account.currentTime`), `assets:[{video:{url}}]`, `metadata.tiktok:{title:"<título curto com emoji>", isAiGenerated:true}`. O `dueAt` tem de estar no futuro; o Buffer só aceita 10 posts agendados em simultâneo.
 5. Confirmar `status:"scheduled"` na resposta. Se der "Video could not be read", esperar 1 min e tentar de novo (o raw do GitHub pode demorar a propagar); se falhar 3 vezes, registar o erro.
 6. Limpeza: apagar de `videos/` os ficheiros cuja data de publicação já passou (git rm + push).

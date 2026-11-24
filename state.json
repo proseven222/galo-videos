@@ -9,17 +9,20 @@
   {
    "video": 9,
    "date": "2026-11-25",
-   "post_id": "6b05a1c4c1a98fcd4c194889",
+   "post_id": "6b05d5e53f48af62c2290d7a",
    "hook_style": "B-contador",
-   "hook_text": "UMA CIDADE DANÇOU SEM PARAR / 400 PESSOAS"
+   "hook_text": "UMA CIDADE DANÇOU SEM PARAR / 400 PESSOAS",
+   "file": "videos/galo_praga_danca_v09b.mp4",
+   "note": "refeito 24/11 com regras R1-R5 + loops/steps/heartbeat"
   },
   {
    "video": 10,
    "date": "2026-11-26",
-   "post_id": "6b05abf387ca84f8fe759635",
+   "post_id": "6b05d5e620f9e770f0849b2a",
    "hook_style": "D-ameaça+contador",
    "hook_text": "UM PORCO QUASE CAUSOU UMA GUERRA / 461 SOLDADOS",
-   "file": "videos/galo_guerra_porco_v10.mp4"
+   "file": "videos/galo_guerra_porco_v10b.mp4",
+   "note": "refeito 24/11 com regras R1-R5 + oink/chime"
   }
  ],
  "errors": [],

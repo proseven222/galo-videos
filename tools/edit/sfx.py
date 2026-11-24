@@ -8,7 +8,7 @@ FN={'womp':lambda: womp(),'gavel':lambda: gavel(1.0),'rumble':lambda: rumble(3.0
  'pop':lambda: pop(0.8),'horn':lambda: horn(1.4,110),'cannon':lambda: cannon(),'explosion':lambda: explosion(),'splash':lambda: splash(),'door':lambda: door(),
  'zap':lambda: zap(1.4,1.0),'rain':lambda: rain(4.0,0.5),'tinkle':lambda: np.zeros(10),'rustle':lambda: rustle(0.6),'step':lambda: step(1.0),'clack':lambda: clack(1.0),
  'thump':lambda: thump(0.5,70,1.0),'press':lambda: press(1.0),'stab':lambda: stab2(1.0),'emu':lambda: emu_call(1.0,82),'gun':lambda: gun(),'crackle':lambda: crackle(2.0)*0.6,
- 'crow':lambda: crow(1.0),'bubbles':lambda: bubbles(1.4,1.0),'cough':lambda: cough(1.0),'clocktick':lambda: clocktick(1.0),'heartbeat':lambda: heartbeat(1.0),'pizz':lambda: pizz(392,1.0),'chime':lambda: chime(1.0)}
+ 'crow':lambda: crow(1.0),'bubbles':lambda: bubbles(1.4,1.0),'cough':lambda: cough(1.0),'clocktick':lambda: clocktick(1.0),'heartbeat':lambda: heartbeat(1.0),'pizz':lambda: pizz(392,1.0),'chime':lambda: chime(1.0),'oink':lambda: oink(1.0)}
 def stab2(g=1.0):
     d=1.6;t=tt(d); s=0
     for f in (196,246.9,293.7): s=s+np.sin(2*np.pi*f*t)*np.exp(-t*2.0)

@@ -160,3 +160,15 @@ def pizz(f=392,g=1.0):
 def chime(g=1.0):
     k=tt(2.0); y=sum(np.sin(2*np.pi*f*k)*np.exp(-k*(2.5+i))*a for i,(f,a) in enumerate(((1760,1),(2349,0.6),(3136,0.4),(3951,0.25))))
     return y*np.minimum(k/0.004,1)*0.3*g
+
+def oink(g=1.0):
+    """grunhido estilizado de porco (motivo do video 10)"""
+    d=0.5; t=tt(d)
+    f=np.interp(t,[0,0.07,0.2,0.3,d],[150,260,190,230,110])
+    ph=2*np.pi*np.cumsum(f)/SR; src=0
+    for k in range(1,12): src=src+np.sin(k*ph)/k**0.9
+    src=src+0.18*noise(d)
+    amp=np.minimum(t/0.01,1)*np.exp(-np.maximum(t-0.28,0)*7)*(1-0.6*np.exp(-((t-0.2)/0.02)**2))
+    y=(bp(src,350,800)+0.8*bp(src,1100,2200))*amp
+    y=lp(y,4000); y=y/np.abs(y).max()
+    return y*0.55*g

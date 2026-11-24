@@ -48,7 +48,13 @@ Repetição de teste (24/11/2026, pedida pelo utilizador): mesmos números recon
 Código: nenhum ficheiro de `tools/edit/*` alterado. Teste sintético (align.json mínimo + config com `punch_gap` 2.0, `alert_words`, `sfx` chime/riser, `tags` kind p, music tense): `py_compile` OK, `cap.py` e `sfx.py` correram sem erro (zooms em 4,25/6,5/8,3/11,9/14,6 s).
 
 ## Experiências (uma linha por vídeo: o que se testa)
-- v11: (a preencher pela execução diária; aplicar R1–R5 do Caderno de Regras Ativas e anotar aqui o que se testa)
+- v11 (A Padeira de Aljubarrota, sai 27/11) — BRIEF fixo, decidido a 24/11 com base na auditoria (aplicar R1–R5 e ainda):
+  - Gancho estilo A: título = a pergunta da narração ("UMA PADEIRA MATOU / 7 SOLDADOS COM UMA PÁ?"), selo "ALJUBARROTA · 1385", `alert_words`: matou, soldados, pá. Contador opcional 0→7 "SOLDADOS NO FORNO" só se ficar limpo.
+  - R1: plano 1 = ícone gigante (`slam`) da pá de forno com o forno, nada de paisagem vazia; o v04 (Parlamento) abriu com cena abstrata e teve 13,6 % de tempo médio de visualização (amostra de 7 h).
+  - Objeto próprio: mão com "6 DEDOS" (etiqueta `p` na frase dos seis dedos) e, no fim, dois selos "HEROÍNA" vs "LENDA" a acompanhar a pergunta para forçar voto nos comentários.
+  - Honestidade: etiqueta "LENDA · SEM PROVAS" na frase "não há provas históricas" (mantém a narração fiel e alimenta o debate).
+  - Som: música `quirky`, `loops` de `crackle` (forno) nas frases do forno, `stab` no payoff "acabou com todos", `chime` em "lenda bem contada". R2: `punch_gap` 2.0. R4: 9 hashtags.
+  - Duração ~46 s (boa, 40–50 s); não encurtar a narração.
 
 ## Ideias de objetos e sons por tipo de história
 - Tempo/duração: relógio, ampulheta e `clocktick` em loop. Medo/doença: `heartbeat`, `cough`. Água/esgoto/rio: `bubbles`, `splash`. Mistério: `pizz` e mood `tense`. Revelação positiva: `chime`. Absurdo/cómico: mood `quirky` e `womp`.

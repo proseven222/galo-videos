@@ -65,14 +65,29 @@ Não imprimir os logs de render com `tail` (usam `\r`); verificar com `ls out/do
  "tags":[{"at":{"word":"1859","nth":0,"off":-0.05},"text":"LINHA A\nLINHA B","dur":2.4,"kind":"d|t|p"}],
  "keywords":["palavra","outra"],                 // palavras que recebem zoom de impacto
  "sfx":[{"at":31.7,"kind":"cannon","gain":0.6}],
- "music":"dark|mystic|warm",
- "drums":[{"from":25.0,"to":33.0}]}              // opcional: tambor que acelera
+ "music":"dark|mystic|warm|tense|quirky",
+ "drums":[{"from":25.0,"to":33.0}],              // opcional: tambor que acelera
+ "alert_words":["guerra","cólera"],              // opcional: palavras de perigo/choque, a vermelho nas legendas (2–5 por vídeo)
+ "loops":[{"kind":"clocktick","from":6,"to":14,"every":0.5,"accel":0.98,"min":0.25,"gain":0.35}],  // opcional: MOTIVO SONORO próprio do vídeo, repetido num trecho
+ "punch_gap":3.0,                                 // opcional: máx. segundos entre zooms de impacto (omissão 3.0; baixar para 2.5 em vídeos lentos)
+ "loop_end":true}                                 // omissão true: flash+tensão no último 0,35 s que desagua no frame 0 (loop)
 ```
 - `tags` (3–7): etiquetas de dados/ano/virada ao longo do vídeo. `kind`: `d` dado, `t` teaser (cria tensão antes da revelação), `p` payoff (revelação). O CTA "SIGA PARA A PRÓXIMA HISTÓRIA IMPROVÁVEL" é acrescentado sozinho.
 - `at.word`: a palavra como aparece nas legendas (números por extenso viram algarismos: "mil oitocentos e cinquenta e nove" → `1859`, "quatrocentos e sessenta e um" → `461`; pontuação final conta, ex. `morreu.`/`pequena?`). Se a palavra não existir, o script lista as disponíveis.
 - Gancho: tem de ser forte, polémico ou criativo nos primeiros 3 s (ver `learnings.md` para estilos e o que está a funcionar).
-- `sfx.kind` possíveis: womp, gavel, rumble, bell, bellhi, belllo, thunder, crack, boom, riser, pop, horn, cannon, explosion, splash, door, zap, rain, rustle, step, clack, thump, press, stab, gun, crackle.
-- `music`: dark (tensão/guerra), mystic (lenda/mistério), warm (curiosidade leve).
+- `sfx.kind` possíveis (novos: crow, bubbles, cough, clocktick, heartbeat, pizz, chime): womp, gavel, rumble, bell, bellhi, belllo, thunder, crack, boom, riser, pop, horn, cannon, explosion, splash, door, zap, rain, rustle, step, clack, thump, press, stab, gun, crackle.
+- `music`: dark (tensão/guerra), mystic (lenda/mistério), warm (curiosidade leve), tense (pizzicato investigativo, suspense rápido), quirky (absurdo/cómico).
+- **Marca do Galo**: o CTA final já inclui um cocorico sintetizado subtil. Não o remover.
+
+### 3.5 Motivo próprio de cada vídeo (retenção — OBRIGATÓRIO)
+Cada vídeo ganha 1 "assinatura" que o torna diferente do anterior, sempre dentro do visual sépia do kit:
+1. **Um objeto/cena nova** na história visual (ex.: relógio e ampulheta para tempo, barra de "cheiro" para o fedor, ponto de interrogação para mistérios). Se o kit não tiver o objeto, desenha-o em SVG simples no mesmo traço (contorno castanho, enchimento sépia, 1 cor de acento âmbar).
+2. **Um motivo sonoro** com `loops` (tique-taque, batimento, bolhas, pizzicato…) ou 2–3 `sfx` de momento ligados ao tema.
+3. **Um mood de música** que combine com o tema (não repetir o mesmo 3 vezes seguidas).
+4. **2–5 `alert_words`** a vermelho (o absurdo/perigo); as datas/números ficam a âmbar (já automático).
+5. Regra dos 2,5 s: nada fica parado mais de ~2,5 s. Como o render tem 8 planos animados, as interrupções vêm de zooms (`punch_gap` 3.0 por omissão), etiquetas, contadores, flash e SFX; se um plano durar >7 s sem evento novo, acrescenta uma `tag` ou um `sfx`.
+6. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`).
+Antes de montar, escreve uma linha em `learnings.md` (secção "Experiências"): o que vais testar neste vídeo (gancho, motivo, mood).
 
 ### 3.4 Montagem final
 ```

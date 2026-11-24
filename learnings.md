@@ -13,6 +13,19 @@ Regras: título de 2 linhas (2.ª em âmbar), selo a partir de 1,45 s, flash + b
 - SFX e música sintetizados; voz sempre por cima (sidechain); loudnorm -14.
 - CTA de marca no fim: pergunta nos comentários + "Siga para a próxima história improvável!".
 
+## Metas de retenção (realistas) e como medir
+- **Gancho:** 70–75 % ou mais ainda a ver aos 3 s (é a meta que controlamos com o gancho).
+- **Vídeo todo:** 75 % de conclusão num vídeo de 45–60 s é raríssimo; a meta prática é tempo médio de visualização de 60 % da duração ou mais e conclusão de 35–40 % ou mais. Vídeos de 40–50 s e fecho em loop ajudam (rever conta como retenção).
+- Comentários: a pergunta final é parte da retenção. Medir comentários por 1000 visualizações.
+- Diário: quando o João partilhar métricas (ou o Buffer as devolver), cruzar o segundo da queda com o plano, etiqueta e som nesse segundo; registar em Repetir / Corrigir / Novo teste.
+
+## Experiências (uma linha por vídeo: o que se testa)
+- v11: (a preencher pela execução diária)
+
+## Ideias de objetos e sons por tipo de história
+- Tempo/duração: relógio, ampulheta e `clocktick` em loop. Medo/doença: `heartbeat`, `cough`. Água/esgoto/rio: `bubbles`, `splash`. Mistério: `pizz` e mood `tense`. Revelação positiva: `chime`. Absurdo/cómico: mood `quirky` e `womp`.
+- Vermelho só para perigo/choque (guerra, morte, cólera); datas, números e locais ficam âmbar.
+
 ## Resultados (preencher a cada execução com métricas do Buffer)
 | Vídeo | Tema | Estilo de gancho | Data | Visualizações | Gostos | Comentários | Partilhas | Notas |
 |---|---|---|---|---|---|---|---|---|

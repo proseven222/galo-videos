@@ -94,3 +94,6 @@ Verificar (obrigatório): extrair fotogramas em 0.3 s, 1.9 s, 3.0 s, meio e fim 
 
 ## 6. Resumo final (em PT-PT, curto)
 Dizer: vídeo produzido (número e tema), gancho usado e estilo, data/hora agendada, link do post no Buffer, principais conclusões das métricas (se houver) e o que será testado a seguir. Lembrar que o TikTok exige etiqueta de IA (já está ativada no agendamento).
+
+## Anexo — exemplo completo (vídeo 10)
+`tools/examples/v10/story_draft.json` e `tools/examples/v10/config.json` são o par história+configuração do vídeo 10, usado como modelo. Notas aprendidas: o plano `landscape` com um único `banners` central parece uma bandeira estranha (preferir 2 banners laterais ou nenhum); o contador só funciona bem com número ≥ 100; o loudnorm + limitador deixa a sonoridade em torno de -15 LUFS, que é aceitável.

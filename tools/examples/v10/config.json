@@ -1,0 +1,102 @@
+{
+ "hook": [
+  "UM PORCO QUASE",
+  "CAUSOU UMA GUERRA"
+ ],
+ "stamp": [
+  "EUA CONTRA",
+  "REINO UNIDO"
+ ],
+ "counter": {
+  "to": 461,
+  "label": "SOLDADOS AMERICANOS · 1859"
+ },
+ "tags": [
+  {
+   "at": {
+    "word": "1859",
+    "off": -0.05
+   },
+   "text": "15 DE JUNHO\nDE 1859",
+   "dur": 2.2
+  },
+  {
+   "at": {
+    "word": "porco",
+    "nth": 1,
+    "off": -0.05
+   },
+   "text": "O PORCO ERA\nDOS BRITÂNICOS",
+   "dur": 2.4
+  },
+  {
+   "at": {
+    "word": "ameaçaram",
+    "off": -0.05
+   },
+   "text": "AMEAÇA: PRENDER\nO AMERICANO",
+   "dur": 2.4,
+   "kind": "t"
+  },
+  {
+   "at": {
+    "word": "461",
+    "off": -0.05
+   },
+   "text": "461 SOLDADOS\nE 14 CANHÕES",
+   "dur": 2.6
+  },
+  {
+   "at": {
+    "word": "morreu.",
+    "off": -0.05
+   },
+   "text": "NINGUÉM MORREU",
+   "dur": 2.2,
+   "kind": "p"
+  },
+  {
+   "at": {
+    "word": "arbitragem",
+    "off": -0.05
+   },
+   "text": "1871: ARBITRAGEM\nDÁ AS ILHAS AOS EUA",
+   "dur": 2.8
+  },
+  {
+   "at": {
+    "word": "pequena?",
+    "off": -0.05
+   },
+   "text": "MAIOR BRIGA POR\nUMA COISA PEQUENA?",
+   "dur": 2.4
+  }
+ ],
+ "keywords": [
+  "porco",
+  "guerra",
+  "soldados",
+  "canhões",
+  "morreu",
+  "ilhas"
+ ],
+ "sfx": [
+  {
+   "at": 31.7,
+   "kind": "cannon",
+   "gain": 0.55
+  },
+  {
+   "at": 42.1,
+   "kind": "gavel",
+   "gain": 0.8
+  }
+ ],
+ "music": "dark",
+ "drums": [
+  {
+   "from": 25.0,
+   "to": 33.0
+  }
+ ]
+}

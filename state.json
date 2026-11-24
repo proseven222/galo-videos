@@ -20,60 +20,6 @@
    "hook_style": "D-ameaça+contador",
    "hook_text": "UM PORCO QUASE CAUSOU UMA GUERRA / 461 SOLDADOS",
    "file": "videos/galo_guerra_porco_v10.mp4"
-  },
-  {
-   "video": 2,
-   "date": "2026-11-27",
-   "post_id": "6b05b2b1e95029ef22a07d13",
-   "hook_style": "pronto",
-   "hook_text": "A GUERRA MAIS CURTA DA HISTÓRIA · MENOS DE 45 MINUTOS",
-   "source": "user-ready",
-   "file": "videos/galo_zanzibar_v02.mp4"
-  },
-  {
-   "video": 3,
-   "date": "2026-11-28",
-   "post_id": "6b05b2b201a938dac6793970",
-   "hook_style": "pronto",
-   "hook_text": "A BATALHA QUE PAROU POR UM ECLIPSE · 585 A.C.",
-   "source": "user-ready",
-   "file": "videos/galo_eclipse_v03.mp4"
-  },
-  {
-   "video": 4,
-   "date": "2026-11-29",
-   "post_id": "6b05b2b3e95029ef22a07dc2",
-   "hook_style": "pronto",
-   "hook_text": "O PARLAMENTO QUASE FUGIU · LONDRES, 1858",
-   "source": "user-ready",
-   "file": "videos/galo_fedor_londres_v04.mp4"
-  },
-  {
-   "video": 5,
-   "date": "2026-11-30",
-   "post_id": "6b05b2b5b9f7e24d8543f1f6",
-   "hook_style": "pronto",
-   "hook_text": "UM VULCÃO CRIOU O FRANKENSTEIN · 1816",
-   "source": "user-ready",
-   "file": "videos/galo_frankenstein_v05.mp4"
-  },
-  {
-   "video": 6,
-   "date": "2026-12-01",
-   "post_id": "6b05b2b6e95029ef22a07ef9",
-   "hook_style": "pronto",
-   "hook_text": "ISTO NÃO TEM GRAÇA: FECHOU ESCOLAS · 1962",
-   "source": "user-ready",
-   "file": "videos/galo_riso_tanganica_v06.mp4"
-  },
-  {
-   "video": 7,
-   "date": "2026-12-02",
-   "post_id": "6b05b2b701a938dac6793c4a",
-   "hook_style": "pronto",
-   "hook_text": "A GUERRA DOS 100 ANOS · NA VERDADE: 116 ANOS",
-   "source": "user-ready",
-   "file": "videos/galo_cem_anos_v07.mp4"
   }
  ],
  "errors": [],
@@ -81,5 +27,6 @@
   "artifact_slug": "41491213-d825-41f1-a0a0-559a4d2216d2",
   "url": "https://claude.ai/artifact/94adzXiipLdqhnysnWTHEZ",
   "posts_file": "dashboard/posts.json"
- }
+ },
+ "notes": "Vídeos 2-7 (prontos do utilizador) foram agendados e depois retirados a 24/11: o utilizador agenda-os à mão às 11:00 para 27/11-02/12. Por isso a automática continua em 03/12."
 }

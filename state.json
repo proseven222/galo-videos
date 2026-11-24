@@ -22,5 +22,10 @@
    "file": "videos/galo_guerra_porco_v10.mp4"
   }
  ],
- "errors": []
+ "errors": [],
+ "dashboard": {
+  "artifact_slug": "41491213-d825-41f1-a0a0-559a4d2216d2",
+  "url": "https://claude.ai/artifact/94adzXiipLdqhnysnWTHEZ",
+  "posts_file": "dashboard/posts.json"
+ }
 }

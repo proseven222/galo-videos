@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendário de Vídeos · O Galo Sabe Tudo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4f7; --surface:#ffffff; --surface-2:#eceef3; --line:#dfe2ea;
+  --ink:#14161c; --ink-2:#4a5060; --ink-3:#7b8294;
+  --amber:#e08a00; --amber-ink:#7a4a00; --amber-soft:#fff1d6;
+  --ok:#1c8a5a; --ok-soft:#dff5ea; --warn:#b3261e; --warn-soft:#fde4e2;
+  --shadow:0 1px 2px rgba(20,22,28,.06),0 8px 24px rgba(20,22,28,.06);
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0e1015; --surface:#171a21; --surface-2:#1f232c; --line:#2a2f3a;
+    --ink:#f2f3f6; --ink-2:#b4bac8; --ink-3:#7f8799;
+    --amber:#ffb000; --amber-ink:#ffd37a; --amber-soft:#2d2308;
+    --ok:#4cd49b; --ok-soft:#10281f; --warn:#ff8a80; --warn-soft:#3a1714;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;min-height:100vh;font-variant-numeric:tabular-nums}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 56px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.brand small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.brand h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(30px,5vw,44px);letter-spacing:.01em;line-height:1.05;text-transform:uppercase}
+.upd{font-size:12.5px;color:var(--ink-3);text-align:right}
+.upd b{color:var(--ink-2);font-weight:600}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.kpi .l{font-size:12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.kpi .v{font-size:26px;font-weight:700;margin-top:2px;line-height:1.15}
+.kpi .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.kpi.hl{background:var(--amber-soft);border-color:transparent}
+.kpi.hl .v{color:var(--amber-ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:16px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.cal{padding:16px}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px}
+.cal-h h2{font-size:18px;font-weight:700;text-transform:capitalize}
+.nav{display:flex;gap:6px}
+.nav button{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;height:34px;min-width:34px;padding:0 12px;font-weight:600;font-size:13px}
+.nav button:hover{border-color:var(--amber)}
+.dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.dow div{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);text-align:center;padding-bottom:6px}
+.day{position:relative;aspect-ratio:1/1.12;min-height:62px;border-radius:10px;background:var(--surface-2);padding:5px 6px;overflow:hidden;border:1.5px solid transparent;text-align:left;display:block;width:100%}
+.day.out{opacity:.38}
+.day .n{font-size:12.5px;font-weight:600;color:var(--ink-2);position:relative;z-index:2}
+.day.today{border-color:var(--ink-3)}
+.day.has{padding:0;border-color:var(--amber);background:var(--ink)}
+.day.has img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.78}
+.day.has::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,.7) 100%)}
+.day.has .n{position:absolute;left:6px;top:4px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.day.has .t{position:absolute;left:6px;bottom:4px;z-index:2;font-size:11.5px;font-weight:700;color:#fff;background:var(--amber);color:#1b1200;border-radius:6px;padding:0 6px;line-height:18px}
+.day.has .vn{position:absolute;right:6px;top:4px;z-index:2;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.day.has.sel{outline:3px solid var(--amber);outline-offset:1px}
+.day.done::before{content:"✓";position:absolute;z-index:3;right:6px;bottom:3px;font-size:13px;font-weight:800;color:#fff;background:var(--ok);border-radius:50%;width:18px;height:18px;line-height:18px;text-align:center}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--ink-2)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+.side{display:flex;flex-direction:column;gap:16px}
+.detail{padding:0;overflow:hidden}
+.detail .top{display:flex;gap:14px;padding:16px}
+.poster{width:96px;aspect-ratio:9/16;border-radius:10px;object-fit:cover;background:var(--surface-2);flex:none;border:1px solid var(--line)}
+.detail h3{font-size:18px;line-height:1.25;margin:4px 0 6px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--amber-soft);color:var(--amber-ink)}
+.badge.ok{background:var(--ok-soft);color:var(--ok)}
+.badge.err{background:var(--warn-soft);color:var(--warn)}
+.when{font-size:14px;font-weight:600;margin-top:8px}
+.when span{color:var(--ink-3);font-weight:500}
+.detail .body{padding:0 16px 16px}
+.lab{font-size:11.5px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.07em;margin:12px 0 4px}
+.hook{font-size:13.5px;color:var(--ink-2)}
+.desc{white-space:pre-wrap;font-size:13.5px;background:var(--surface-2);border-radius:10px;padding:12px 14px;max-height:230px;overflow:auto;line-height:1.55}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;border-radius:10px;padding:8px 14px;font-weight:600;font-size:13.5px;text-decoration:none;border:1px solid var(--line);background:var(--surface-2)}
+.btn.pri{background:var(--amber);color:#1b1200;border-color:transparent}
+.btn:hover{filter:brightness(1.06)}
+.empty{padding:28px 16px;text-align:center;color:var(--ink-3)}
+
+.list{padding:6px 8px 8px}
+.list h2{font-size:15px;font-weight:700;padding:10px 8px 6px}
+.item{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:1.5px solid transparent;border-radius:12px;padding:8px}
+.item:hover{background:var(--surface-2)}
+.item.sel{border-color:var(--amber);background:var(--surface-2)}
+.item img{width:42px;aspect-ratio:9/16;object-fit:cover;border-radius:7px;flex:none;background:var(--surface-2)}
+.item .m{min-width:0;flex:1}
+.item .d{font-size:12px;color:var(--ink-3);font-weight:600}
+.item .ti{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .badge{flex:none}
+.foot{margin-top:22px;font-size:12.5px;color:var(--ink-3);text-align:center}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:480px){
+  .wrap{padding:16px 12px 40px}
+  .cal{padding:12px}
+  .dow,.days{gap:4px}
+  .day{min-height:52px;padding:3px 4px}
+  .day.has .t{font-size:10px;line-height:16px;padding:0 4px}
+  .day.has .vn{display:none}
+  .poster{width:80px}
+  .upd{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><small>Histórias Improváveis · TikTok</small><h1>Calendário de vídeos</h1></div>
+    <div class="upd" id="upd"></div>
+  </header>
+
+  <section class="kpis" id="kpis"></section>
+
+  <div class="grid">
+    <section class="card cal">
+      <div class="cal-h">
+        <h2 id="mt"></h2>
+        <div class="nav"><button id="prev" aria-label="Mês anterior">‹</button><button id="today">Hoje</button><button id="next" aria-label="Mês seguinte">›</button></div>
+      </div>
+      <div class="dow"><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div><div>Dom</div></div>
+      <div class="days" id="days"></div>
+      <div class="legend">
+        <span><i style="background:var(--amber)"></i>Agendado (hora de Lisboa)</span>
+        <span><i style="background:var(--ok)"></i>Já publicado</span>
+      </div>
+    </section>
+
+    <aside class="side">
+      <section class="card detail" id="detail"></section>
+      <section class="card list" id="list"></section>
+    </aside>
+  </div>
+
+  <p class="foot">Atualizado automaticamente todos os dias, quando um novo vídeo é agendado. Horas no fuso de Lisboa.</p>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var D = window.GALO_DATA || {posts:[]};
+  var posts = (D.posts||[]).slice().sort(function(a,b){return (a.date+a.time)<(b.date+b.time)?-1:1});
+  var TOTAL = (D.meta && D.meta.totalScripts) || 30;
+  var MONTHS = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  var WD = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+
+  // converte data+hora de Lisboa para instante real
+  function lisbon(date,time){
+    var p = date.split('-').map(Number), t=(time||'18:00').split(':').map(Number);
+    var guess = Date.UTC(p[0],p[1]-1,p[2],t[0],t[1]);
+    var f = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Lisbon',hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+    function off(ms){var o={};f.formatToParts(new Date(ms)).forEach(function(x){o[x.type]=x.value});
+      var h=o.hour==='24'?0:+o.hour; return Date.UTC(+o.year,+o.month-1,+o.day,h,+o.minute)-ms;}
+    return guess-off(guess);
+  }
+  function pad(n){return (n<10?'0':'')+n}
+  function key(y,m,d){return y+'-'+pad(m+1)+'-'+pad(d)}
+  function fmtDate(date){var p=date.split('-').map(Number);var d=new Date(Date.UTC(p[0],p[1]-1,p[2]));return WD[d.getUTCDay()]+', '+p[2]+' de '+MONTHS[p[1]-1]+' de '+p[0]}
+  function isDone(p){return p.status==='published'||(p.status==='scheduled'&&lisbon(p.date,p.time)<Date.now())}
+  function badge(p){
+    if(p.status==='error') return '<span class="badge err">Erro</span>';
+    if(isDone(p)) return '<span class="badge ok">Publicado</span>';
+    return '<span class="badge">Agendado</span>';
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  var byDate={}; posts.forEach(function(p){byDate[p.date]=p});
+  var now=new Date();
+  var upcoming=posts.filter(function(p){return !isDone(p) && p.status!=='error'});
+  var sel = upcoming[0] || posts[posts.length-1] || null;
+  var view = sel ? {y:+sel.date.slice(0,4), m:+sel.date.slice(5,7)-1} : {y:now.getFullYear(), m:now.getMonth()};
+
+  function kpis(){
+    var next=upcoming[0], last=posts.length?posts[posts.length-1]:null;
+    var lastNum = posts.reduce(function(a,p){return Math.max(a,p.video||0)},0);
+    var left = Math.max(0,TOTAL-lastNum);
+    var nv='—', ns='Sem vídeos agendados';
+    if(next){
+      var ms=lisbon(next.date,next.time)-Date.now(), h=Math.floor(ms/3600000), d=Math.floor(h/24);
+      nv = d>=1 ? 'em '+d+' d '+(h%24)+' h' : 'em '+h+' h '+pad(Math.floor(ms%3600000/60000))+' min';
+      ns = next.date.slice(8)+'/'+next.date.slice(5,7)+' às '+next.time+' · '+next.title;
+    }
+    var cov = last ? ('até '+last.date.slice(8)+'/'+last.date.slice(5,7)) : '—';
+    var covS = upcoming.length ? (upcoming.length+(upcoming.length===1?' dia':' dias')+' à frente') : 'Nada à frente';
+    document.getElementById('kpis').innerHTML =
+      '<div class="kpi hl"><div class="l">Próximo vídeo</div><div class="v">'+nv+'</div><div class="s">'+esc(ns)+'</div></div>'+
+      '<div class="kpi"><div class="l">Agendados</div><div class="v">'+upcoming.length+'</div><div class="s">vídeos à espera de publicar</div></div>'+
+      '<div class="kpi"><div class="l">Cobertura</div><div class="v">'+cov+'</div><div class="s">'+covS+'</div></div>'+
+      '<div class="kpi"><div class="l">Roteiros por usar</div><div class="v">'+left+'</div><div class="s">de '+TOTAL+' · último: vídeo '+lastNum+'</div></div>';
+    var u=D.updated?new Date(D.updated):null;
+    document.getElementById('upd').innerHTML = u ? 'Última atualização<br><b>'+u.toLocaleString('pt-PT',{timeZone:'Europe/Lisbon',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})+'</b>' : '';
+  }
+
+  function cal(){
+    document.getElementById('mt').textContent = MONTHS[view.m]+' '+view.y;
+    var first=new Date(view.y,view.m,1), start=(first.getDay()+6)%7;
+    var dim=new Date(view.y,view.m+1,0).getDate(), prevDim=new Date(view.y,view.m,0).getDate();
+    var cells=[], total=Math.ceil((start+dim)/7)*7;
+    for(var i=0;i<total;i++){
+      var d=i-start+1, y=view.y, m=view.m, out=false;
+      if(d<1){m--; if(m<0){m=11;y--} d=prevDim+d; out=true}
+      else if(d>dim){m++; if(m>11){m=0;y++} d=d-dim; out=true}
+      cells.push({y:y,m:m,d:d,out:out,k:key(y,m,d)});
+    }
+    var td=key(now.getFullYear(),now.getMonth(),now.getDate());
+    document.getElementById('days').innerHTML = cells.map(function(c){
+      var p=byDate[c.k], cls='day'+(c.out?' out':'')+(c.k===td?' today':'');
+      if(p){
+        cls+=' has'+(isDone(p)?' done':'')+(sel&&sel.date===c.k?' sel':'');
+        return '<button class="'+cls+'" data-k="'+c.k+'" aria-label="Vídeo '+p.video+' em '+c.d+'">'+
+          (p.thumb?'<img alt="" src="'+p.thumb+'">':'')+
+          '<span class="n">'+c.d+'</span><span class="vn">#'+p.video+'</span><span class="t">'+esc(p.time)+'</span></button>';
+      }
+      return '<div class="'+cls+'"><span class="n">'+c.d+'</span></div>';
+    }).join('');
+    Array.prototype.forEach.call(document.querySelectorAll('.day.has'),function(b){
+      b.onclick=function(){sel=byDate[b.dataset.k];render()};
+    });
+  }
+
+  function detail(){
+    var el=document.getElementById('detail');
+    if(!sel){el.innerHTML='<div class="empty">Ainda não há vídeos agendados.</div>';return}
+    var p=sel;
+    el.innerHTML =
+      '<div class="top">'+(p.thumb?'<img class="poster" alt="" src="'+p.thumb+'">':'<div class="poster"></div>')+
+      '<div><div>'+badge(p)+'</div><h3>Vídeo '+p.video+' · '+esc(p.title)+'</h3>'+
+      '<div class="when">'+fmtDate(p.date)+' <span>às</span> '+esc(p.time)+'</div></div></div>'+
+      '<div class="body">'+
+      (p.hookText?'<div class="lab">Gancho (primeiros 3 s)</div><div class="hook">'+esc(p.hookText)+(p.hookStyle?' · estilo '+esc(p.hookStyle):'')+'</div>':'')+
+      '<div class="lab">Descrição no TikTok</div><div class="desc" id="desc">'+esc(p.description)+'</div>'+
+      '<div class="acts"><button class="btn pri" id="copy">Copiar descrição</button>'+
+      (p.videoUrl?'<a class="btn" target="_blank" rel="noopener" href="'+esc(p.videoUrl)+'">Abrir vídeo ↗</a>':'')+'</div></div>';
+    document.getElementById('copy').onclick=function(){
+      var b=this, t=p.description||'';
+      function ok(){b.textContent='Copiado ✓';setTimeout(function(){b.textContent='Copiar descrição'},1600)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+      function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()}
+    };
+  }
+
+  function list(){
+    var el=document.getElementById('list');
+    var items=posts.slice().reverse();
+    items=upcoming.concat(posts.filter(function(p){return upcoming.indexOf(p)<0}).reverse());
+    el.innerHTML='<h2>Todos os vídeos</h2>'+(items.length?items.map(function(p){
+      return '<button class="item'+(sel&&sel.id===p.id?' sel':'')+'" data-id="'+p.id+'">'+
+        (p.thumb?'<img alt="" src="'+p.thumb+'">':'<span></span>')+
+        '<span class="m"><div class="d">'+p.date.slice(8)+'/'+p.date.slice(5,7)+' · '+esc(p.time)+'</div><div class="ti">#'+p.video+' '+esc(p.title)+'</div></span>'+badge(p)+'</button>';
+    }).join(''):'<div class="empty">Sem vídeos.</div>');
+    Array.prototype.forEach.call(el.querySelectorAll('.item'),function(b){
+      b.onclick=function(){
+        sel=posts.filter(function(p){return p.id===b.dataset.id})[0];
+        view={y:+sel.date.slice(0,4),m:+sel.date.slice(5,7)-1}; render();
+      };
+    });
+  }
+
+  function render(){kpis();cal();detail();list()}
+  document.getElementById('prev').onclick=function(){view.m--;if(view.m<0){view.m=11;view.y--}cal()};
+  document.getElementById('next').onclick=function(){view.m++;if(view.m>11){view.m=0;view.y++}cal()};
+  document.getElementById('today').onclick=function(){view={y:now.getFullYear(),m:now.getMonth()};cal()};
+  render();
+  setInterval(kpis,60000);
+})();
+</script>
+</body>
+</html>

@@ -89,6 +89,16 @@ Verificar (obrigatório): extrair fotogramas em 0.3 s, 1.9 s, 3.0 s, meio e fim 
 6. Limpeza: apagar de `videos/` os ficheiros cuja data de publicação já passou (git rm + push).
 7. Atualizar `state.json`: `next_video += 1`, `next_publish_date += 1 dia`, adicionar a `published` `{video, date, post_id, hook_style, hook_text}`. Fazer commit e push de `state.json` e `learnings.md`.
 
+## 4b. Atualizar o calendário (dashboard) — SEMPRE depois de agendar
+O painel do utilizador é um artifact (slug em `state.json` → `dashboard.artifact_slug`; ficheiros `index.html` + `data.js`). Só o `data.js` muda.
+1. Miniatura: `ffmpeg -y -loglevel error -ss 1.9 -i $W/final.mp4 -frames:v 1 -vf scale=216:-2 -q:v 6 dashboard/thumbs/vNN.jpg`
+2. Acrescentar a `dashboard/posts.json` (lista `posts`) um item: `{"id":"vNN","video":N,"date":"AAAA-MM-DD","time":"18:00","status":"scheduled","title":"<tema curto (local, ano)>","tiktokTitle":"<título do post>","hookStyle":"<estilo>","hookText":"<texto do gancho em maiúsculas>","videoUrl":"<URL raw do GitHub>","bufferPostId":"<id>","duration":<s>,"description":"<descrição completa enviada ao TikTok, com quebras de linha \n>"}`.
+3. Marcar como publicados os vídeos cuja data já passou: `"status":"published"` (o painel também o faz sozinho pela hora, mas assim fica registado). Se um agendamento falhou, `"status":"error"`.
+4. `python3 tools/dashboard_build.py` → gera `/home/claude/dash/data.js` (miniaturas embutidas em base64).
+5. `mcp__claude-artifacts__get_artifact` com o slug → `version`; depois `mcp__claude-artifacts__publish_files` com `slug`, `base_version`=version, `mode:"patch"`, `files:[{as:"data.js", path:"/home/claude/dash/data.js"}]`. NÃO republicar o `index.html` (só se o painel tiver sido apagado: nesse caso usar `dashboard/index.html` do repositório e criar um novo artifact, e guardar o novo slug em `state.json`).
+6. `git add dashboard state.json`, commit e push (junto com o passo 4.7).
+Se o painel falhar, não bloqueia o vídeo: registar em `state.errors` e avisar no resumo.
+
 ## 5. Fim da série
 `scripts/narr_final.json` só vai até ao vídeo 30. Se `next_video` > 30: não produzir nada; escrever em `state.json` `"status":"sem guiões"` e avisar o utilizador no resumo final para combinar novos guiões/narrações.
 

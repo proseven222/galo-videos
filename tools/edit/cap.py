@@ -47,7 +47,7 @@ for ui,u in enumerate(units):
         ev.append(f"Dialogue: 1,{T(s)},{T(en2)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
 # ── GANCHO (0-3.45 s) ──
 H=CFG['hook']; S=CFG.get('stamp')
-ev.append(f"Dialogue: 2,{T(0.05)},{T(3.45)},Hook,,0,0,0,,{{\\an5\\pos(540,330)\\fscx70\\fscy70\\alpha&HFF&\\t(0,140,\\fscx108\\fscy108\\alpha&H00&)\\t(140,260,\\fscx100\\fscy100)\\fad(0,200)}}{H[0]}\\N{{\\1c{ACT}}}{H[1]}")
+ev.append(f"Dialogue: 2,{T(0)},{T(3.45)},Hook,,0,0,0,,{{\\an5\\pos(540,330)\\fscx88\\fscy88\\t(0,120,\\fscx108\\fscy108)\\t(120,240,\\fscx100\\fscy100)\\fad(0,200)}}{H[0]}\\N{{\\1c{ACT}}}{H[1]}")
 if S:
     ev.append(f"Dialogue: 2,{T(1.45)},{T(3.45)},Tag,,0,0,0,,{{\\an5\\pos(540,560)\\frz-3\\fscx60\\fscy60\\t(0,120,\\fscx114\\fscy114)\\t(120,220,\\fscx100\\fscy100)\\fad(0,200)}}  {S[0]}\\N  {S[1]}  ")
 C=CFG.get('counter')
@@ -104,7 +104,7 @@ for p in punch:
     if not pr or p-pr[-1]>=1.8: pr.append(p)
 punch=pr
 json.dump({'punch':punch,'tags':shown,'cuts':CUTS,'dur':DUR,'counter':bool(C),'words':[(w[0],w[1],w[2]) for w in words],'sfx':CFG.get('sfx',[]),'music':CFG.get('music','dark'),'drums':CFG.get('drums',[]),'loops':CFG.get('loops',[]),'loop_end':CFG.get('loop_end',True)},open(os.path.join(OUT,'punch.json'),'w'))
-br="gte(t,0)*0.3*exp(-max(0\\,t-0)*16)+gte(t,1.45)*0.2*exp(-max(0\\,t-1.45)*16)"
+br="gte(t,0)*0.07*exp(-max(0\\,t-0)*16)+gte(t,1.45)*0.2*exp(-max(0\\,t-1.45)*16)"
 for c in CUTS: br+=f"+gte(t,{c})*0.18*exp(-max(0\\,t-{c})*16)"
 if CFG.get('loop_end',True): br+=f"+gte(t,{DUR-0.35:.2f})*0.28*(t-{DUR-0.35:.2f})/0.35"   # flash a subir no fim -> liga ao flash do frame 0 (loop)
 zz="0.05*exp(-t*6)"+"".join(f"+gte(t,{p:.2f})*0.045*exp(-max(0\\,t-{p:.2f})*7)" for p in punch)

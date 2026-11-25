@@ -8,16 +8,19 @@ function mapGrid(q) {
 }
 const ST = window.STORY, NF = ST.shots.map(s => Math.round(s.sec * FPS)), CUTS = [0]; NF.forEach((n, i) => CUTS.push(CUTS[i] + n));
 function drawShot(i, lf) {
-  const s = ST.shots[i], n = NF[i], u = lf / n, hook = i === 0 && s.hook !== false, cam = camera(s.cam || 'push', u);
+  const s = ST.shots[i], n = NF[i], u = lf / n, hook = i === 0 && s.hook !== false;
+  // sub-plano reenquadrado: animacao e camara continuam as do plano-mae (f0 = inicio dentro dele, fn = duracao dele)
+  const tf = lf + (s.f0 || 0), tn = s.fn || n, cam = camera(s.cam || 'push', tf / tn);
   let sc = cam.s, dx = 0, dy = cam.y;
   if (hook) { sc *= 1 + .5 * (1 - eOut(lf / 22)); const sh = Math.exp(-lf / 6) * 26; dx = Math.sin(lf * 2.3) * sh; dy += Math.cos(lf * 1.9) * sh; }
   g.save(); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+  if (s.frame) { const z = Math.max(1, s.frame.s || 1.5), fx = clamp((s.frame.x != null ? s.frame.x : .5) * W, 540 / z, W - 540 / z), fy = clamp((s.frame.y != null ? s.frame.y : .45) * H, 900 / z, H - 1020 / z); g.translate(540, 900); g.scale(z, z); g.translate(-fx, -fy); }
   g.translate(540 + dx, cam.py + dy); g.rotate(cam.rot); g.scale(sc, sc); g.translate(-540, -cam.py);
   const p = Object.assign({}, s.p || {}); if (ST.seed && !p.seed) p.seed = ST.seed + i * 7;
-  (TPL[s.tpl] || T_landscape)(p, lf, n, cam.x);
+  (TPL[s.tpl] || T_landscape)(p, tf, tn, cam.x);
   g.restore();
   for (const pp of (s.pop || [])) {
-    const k = (lf - (pp.t0 || 0) * n) / 11; if (k <= 0 || (pp.t1 != null && u >= pp.t1)) continue;
+    const k = (lf - (pp.f0 != null ? pp.f0 : (pp.t0 || 0) * n)) / 11; if (k <= 0 || (pp.t1 != null && u >= pp.t1)) continue;
     const kk = clamp(k), ov = eOut(kk) + .2 * Math.sin(kk * Math.PI), x = pp.x != null ? pp.x * W : 540, y = pp.y != null ? pp.y * H : 900, r = pp.r || 290;
     g.save(); g.translate(x, y); g.scale(ov, ov); g.fillStyle = 'rgba(232,212,162,.95)'; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill(); g.strokeStyle = '#1b0f06'; g.lineWidth = 10; g.stroke(); g.lineWidth = 3; g.beginPath(); g.arc(0, 0, r - 28, 0, 7); g.stroke(); icon(g, pp.n, 0, 0, pp.s || 1.8, lf); g.restore();
     if (k < 1.6) { g.save(); g.strokeStyle = `rgba(255,240,200,${.9 * (1 - k / 1.6)})`; g.lineWidth = 12; g.beginPath(); g.arc(x, y, r + 260 * (k / 1.6), 0, 7); g.stroke(); g.restore(); }

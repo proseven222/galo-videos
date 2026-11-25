@@ -30,28 +30,38 @@ python3 tools/edit/align.py N audio/vNN.mp3 scripts/narr_final.json $W/align.jso
 ```
 Ver o resultado: 8 linhas L1..L8; cada pausa deve cair onde há pontuação. Se o custo for muito alto (>40) ou faltarem linhas, rever.
 
-### 3.1 História visual (8 planos = 8 linhas da narração)
-Escrever `$W/story_draft.json` com `{"seed":N*10+1,"shots":[...]}`; cada plano corresponde à linha de narração com o mesmo número (plano 1 = frase-gancho, plano 8 = pergunta + CTA). Os tempos (`sec`) são calculados por `retime.py`, por isso põe `"sec":1`.
+### 3.1 História visual (8 entradas = 8 linhas da narração, cada uma com 2 planos ou mais)
+Escrever `$W/story_draft.json` com `{"seed":N*10+1,"twist":{"word":"..."},"shots":[...]}`; cada entrada corresponde à linha de narração com o mesmo número (entrada 1 = frase-gancho, entrada 8 = pergunta + CTA). Os tempos (`sec`) são calculados por `retime.py`, por isso põe `"sec":1`. A voz nunca é cortada nem acelerada.
+
+**Dois planos por frase (aprovado pelo João a 25/11/2026).** A entrada é o plano A; `"b"` é o 2.º plano (e `"c"`, `"d"` os seguintes, por ordem no tempo, nas frases longas: o `retime.py` cria-os enquanto um bocado passar de 4,5 s). O corte cai numa pausa perto do meio; para o prender a uma palavra: `"b":{"at":{"word":"forno"},...}` (`word`/`nth` contam só dentro dessa frase). Na frase 1 a mudança é aos 1,45 s (junto com o selo). `b` pode ser:
+- outro plano completo (`tpl`, `cam`, `p`): detalhe/insert (`closeup`), reação, plano geral, mapa. Preferir isto: mostra cada ideia da frase a acontecer.
+- o mesmo cenário reenquadrado: `"b":{"frame":{"s":1.7,"x":0.27,"y":0.55}}` (`s` = aproximação ≥1; `x`,`y` = ponto do ecrã, 0–1, que fica no centro). A animação e a câmara continuam.
+- sem `b`: enquadramento automático (o script avisa; confirmar na folha). `"b":false` mantém um só plano (evitar).
+Variar o tamanho: geral → grande plano → detalhe → reação. Ao reenquadrar, o assunto não pode ficar atrás da legenda (y≈0,67) nem das etiquetas (y≈0,29), nem cortado na borda.
+
+**Medalhões presos à palavra:** `"pop":[{"n":"hand6","word":"seis","y":0.47,"r":300}]` entra 2 fotogramas antes da palavra (não usar `t0`).
+
+**Reviravolta (obrigatório):** `"twist":{"word":"acabou"}` = a palavra do momento alto (`nth` conta em toda a narração; nunca na frase 1 nem no CTA). A música pára 0,4 s antes, entra uma batida grave e a câmara aproxima; o plano que começa aí deve mostrar a ação (pôr `b`/`c` com `"at"` nessa palavra, se der). Se houver uma etiqueta `p` nesse instante, o `sfx` da R5 mantém-se.
 ```
 python3 tools/edit/retime.py $W/align.json $W/story_draft.json /home/claude/kit/stories/vNN.json
 ```
-Ver exemplos reais em `tools/kit/stories/v05n..v09n.json` (e `/home/claude/kit/stories/v10.json` se existir). Vocabulário:
+Exemplo no formato atual: `tools/examples/v11/story_draft_2planos.json` (os mais antigos só têm um plano por frase). Vocabulário:
 - Plano 1 leva `"slam":"<ícone>"` (carimbo gigante do ícone no gancho). **R1:** o plano 1 mostra "a coisa" (objeto/animal/número) logo no início, nunca paisagem vazia; se a história tem um animal (pig, mule, snake, rooster), esse animal é o ícone do `slam` e do `closeup` do plano 1.
 - `tpl`: `landscape` (céu/terreno, `actors`, `props`, `banners`, `birds`, `fire`, `rain`, `snow`, `smoke`...), `interior` (`kind`:hall/archive..., `table`, `items`, `actors`, `fore`), `closeup` (`icons`:[{n,x,y,s}], `below` atores), `map` (`land`:[{n:"island",x,y,w,h}], `pins`, `routes`, `waves`, `dots`), `sea`, `tunnel`.
 - `cam`: push, pull, panL, panR, tiltUp, tiltDown, orbit, drift. Alternar câmaras e templates entre planos seguidos.
 - `tod`: day, dusk, night, gold, grey, storm, dawn, fire. `sky`: castle, city, dunes, forest, huts, jungle, monastery, mountains, port, ruins, tower, village, volcano, plain. `gnd`: sand, mud, stone...
 - Atores `type`: woman, man, top, scholar, soldier, knight, king, monk, priest, wizard, pilgrim, sailor, hood. `mode`: idle, march, run, cheer, up, dance, cough, fan, kneel, point, look, shade, wave. Props de ator: spear, scroll, banner...
 - Ícones (`slam`, `icons[].n`, `props` `{t:"icon",n:...}`): anchor, bell, book, bread, candle, cannon, castle, clock, coins, crown, gallows, globe, hourglass, key, lantern, moon, mule, pig, plane, question, quill, ring, rooster, scroll, ship, shoe, shovel, snake, sun, sword, tart, throne, tomb, torch, tower, tulip.
-- Variar: nunca dois planos seguidos com o mesmo template+câmara; usar `closeup` com ícone nos momentos-chave; o último plano é sempre um `closeup` com ícone `question` (ou o tema).
+- Variar: nunca duas entradas seguidas com o mesmo template+câmara; usar `closeup` com ícone nos momentos-chave; a última entrada é sempre um `closeup` com ícone `question` (ou o tema).
 - Pré-visualizar antes de renderizar:
 ```
 cd /home/claude/kit && ./build.sh stories/vNN.json /home/claude/kit/out/vNN.html
-node still.js $PWD/out/vNN.html $PWD/out/sNN 0:0.7 1:0.6 2:0.6 3:0.6 4:0.6 5:0.6 6:0.6 7:0.6
-ffmpeg -y -loglevel error -pattern_type glob -i 'out/sNN_*.jpg' -filter_complex "scale=270:-1,tile=8x1" -frames:v 1 out/sheetNN.jpg   # ver com Read
+rm -f out/sNN_*.jpg && node still.js $PWD/out/vNN.html $PWD/out/sNN all
+ffmpeg -y -loglevel error -pattern_type glob -i 'out/sNN_*.jpg' -filter_complex "scale=270:-1,tile=6x5:padding=4:color=white" -frames:v 1 out/sheetNN.jpg   # ver com Read (até 30 planos)
 ```
 (os caminhos para `still.js` têm de ser absolutos). Corrigir ícones/planos estranhos (um ícone que não se reconheça muda-se por outro).
 
-### 3.2 Render (cerca de 5–6 minutos)
+### 3.2 Render (cerca de 4–6 minutos)
 ```
 cd /home/claude/kit && rm -f out/doneNN.txt && ./renderv.sh NN      # gera out/videoNN_silent.mp4
 cp out/videoNN_silent.mp4 $W/v.mp4
@@ -88,16 +98,17 @@ Cada vídeo ganha 1 "assinatura" que o torna diferente do anterior, sempre dentr
 2. **Um motivo sonoro** com `loops` (tique-taque, batimento, bolhas, pizzicato…) ou 2–3 `sfx` de momento ligados ao tema.
 3. **Um mood de música** que combine com o tema (não repetir o mesmo 3 vezes seguidas).
 4. **2–5 `alert_words`** a vermelho (o absurdo/perigo); as datas/números ficam a âmbar (já automático).
-5. Regra dos 2,5 s: nada fica parado mais de ~2,5 s. Como o render tem 8 planos animados, as interrupções vêm de zooms (`punch_gap` 3.0 por omissão), etiquetas, contadores, flash e SFX; se um plano durar >7 s sem evento novo, acrescenta uma `tag` ou um `sfx`.
+5. Ritmo de imagem: planos de ~3 s (2 ou mais por frase, ver 3.1); o `retime.py` imprime a média e o máximo e avisa acima de 5 s (corrigir com `c`/`d` ou outra palavra). Zooms, etiquetas, contadores e SFX continuam por cima.
 6. Cadência R2: `punch_gap` 2.0 e um evento novo (zoom, etiqueta, SFX, câmara) a cada ~2 s.
 7. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`). **Regra de marca:** qualquer reforço de loop (o último plano a ecoar o primeiro, ícone ou texto temático) acontece ANTES da palavra "Siga"; o CTA e o cocorico ficam intactos (o cocorico toca ~0,55 s depois do início do CTA, em `sfx.py`) e o flash do `loop_end` (últimos 0,35 s) mantém-se.
 Antes de montar, escreve uma linha em `learnings.md` (secção "Experiências"): o que vais testar neste vídeo (gancho, motivo, mood).
 
 ### 3.4 Montagem final
 ```
-bash tools/edit/finish.sh NN $W      # legendas + SFX + música + marca de água + loudnorm; cria $W/final.mp4
+bash tools/edit/finish.sh NN $W      # legendas + SFX + música + mistura medida (mix.py) + marca de água + loudnorm; cria $W/final.mp4
 ```
-Verificar (obrigatório): **primeiro extrair fotogramas em 0.0 s e 0.1 s e confirmar que o título do gancho se lê e o frame não está branco/vazio (R6)**; depois extrair fotogramas em 0.3 s, 1.9 s, 3.0 s, meio e fim (`ffmpeg -ss T -i final.mp4 -frames:v 1 x.png`) e **ver** com Read. Confirmar: gancho legível sem tapar a cara/ícone, legendas no sítio, marca de água no canto superior direito sem sobrepor o gancho, ortografia PT-BR correta, duração 44–61 s, pico verdadeiro ≤ -1 dBTP, ficheiro < 95 MB. Corrigir e voltar a executar `finish.sh` (é rápido, ~1 min) se algo falhar.
+**Som (aprovado a 25/11/2026), tratado pelo `mix.py`:** picos dos efeitos ≤ 0,7× o pico da voz; efeitos abaixo da voz enquanto ela fala (mais no gancho); música ~11 dB abaixo da voz (~8 dB nas pausas); música parada na reviravolta. Os valores ficam em `$W/levels.json`; se aparecer `MISTURA REPROVADA`, o script pára: corrigir (normalmente um `gain` exagerado em `sfx`/`loops`) e repetir; nunca contornar a verificação. Os `gain` do config continuam a valer, mas o `mix.py` limita os excessos.
+Verificar (obrigatório): **primeiro extrair fotogramas em 0.0 s e 0.1 s e confirmar que o título do gancho se lê e o frame não está branco/vazio (R6)**; depois extrair fotogramas em 0.3 s, 1.4 s e 1.55 s (tem de haver mudança de plano), 1.9 s, 3.0 s, na reviravolta (`timing.json`, t+0,6 s), meio e fim (`ffmpeg -ss T -i final.mp4 -frames:v 1 x.png`) e **ver** com Read. Confirmar: gancho legível sem tapar a cara/ícone, legendas no sítio, marca de água no canto superior direito sem sobrepor o gancho, ortografia PT-BR correta, duração 44–61 s, pico verdadeiro ≤ -1 dBTP, ficheiro < 95 MB. Corrigir e voltar a executar `finish.sh` (é rápido, ~1 min) se algo falhar.
 
 ## 4. Publicar e agendar
 1. Escolher o nome: `videos/galo_<slug>_vNN.mp4` (slug curto sem acentos). Copiar `$W/final.mp4`.
@@ -124,7 +135,10 @@ Se o painel falhar, não bloqueia o vídeo: registar em `state.errors` e avisar 
 ## 6. Resumo final (em PT-PT, curto)
 Dizer: vídeo produzido (número e tema), gancho usado e estilo, data/hora agendada, link do post no Buffer, principais conclusões das métricas (se houver) e o que será testado a seguir. Lembrar que o TikTok exige etiqueta de IA (já está ativada no agendamento).
 
-## Anexo — exemplo completo (vídeo 10)
+## Anexo — exemplo no formato atual (vídeo 11, teste de 25/11)
+`tools/examples/v11/story_draft_2planos.json`: 17 planos, média 2,7 s, medalhões presos à palavra e reviravolta em "acabou". O config é o de `tools/examples/v11/config.json`.
+
+## Anexo — exemplo de configuração (vídeo 10, história ainda com um plano por frase)
 `tools/examples/v10/story_draft.json` e `tools/examples/v10/config.json` são o par história+configuração do vídeo 10, usado como modelo. Notas aprendidas: o plano `landscape` com um único `banners` central parece uma bandeira estranha (preferir 2 banners laterais ou nenhum); o contador só funciona bem com número ≥ 100; o loudnorm + limitador deixa a sonoridade em torno de -15 LUFS, que é aceitável.
 
 ## Nota — datas

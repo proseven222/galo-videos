@@ -64,6 +64,10 @@ else:
     add(riser(1.5),1.9,0.55); add(boom(1.2,100,32),3.0,0.9); add(stab2(1.0),3.0,0.8)
 for i,c in enumerate(CUTS):
     add(whoosh(0.7,True),c-0.45,0.55,-0.4 if i%2 else 0.4); add(boom(0.8,100,40)*0.55,c-0.02,1.0)
+for i,c in enumerate(PJ.get('subcuts',[])):          # mudanca de plano dentro da frase: sopro leve
+    add(whoosh(0.3,False)*0.5,c-0.12,0.4,0.25 if i%2 else -0.25)
+if PJ.get('twist'):                                   # reviravolta: batida grave (a musica para no mix.py)
+    add(boom(1.4,90,30,5),PJ['twist']['t'],1.0)
 for i,p in enumerate(PJ['punch']): add(whoosh(0.35,True)*0.5,p-0.12,0.5,-0.3 if i%2 else 0.3)
 for s0,k in PJ['tags']:
     add(thump(0.5,85,0.8),s0,1); add(tick(1500,0.7),s0+0.02,1,0.0)

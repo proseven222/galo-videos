@@ -1,0 +1,558 @@
+{
+ "seed": 111,
+ "shots": [
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "push",
+   "slam": "paforno",
+   "p": {
+    "kind": "workshop",
+    "big": "forno",
+    "tod": "night",
+    "table": 0,
+    "actors": [
+     {
+      "n": 1,
+      "type": "woman",
+      "prop": "peel",
+      "mode": "idle",
+      "h": 640,
+      "x0": 230,
+      "spread": 0,
+      "y": 1640,
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "fire",
+     "icons": [
+      {
+       "n": "fornocheio",
+       "s": 2.4
+      }
+     ],
+     "below": [
+      {
+       "n": 1,
+       "type": "woman",
+       "mode": "idle",
+       "spread": 0,
+       "dir": 1,
+       "prop": "peel",
+       "h": 520,
+       "x0": 260,
+       "y": 1990
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "gold",
+    "sky": "castle",
+    "gnd": "sand",
+    "birds": 3,
+    "smoke": 0.18,
+    "actors": [
+     {
+      "n": 13,
+      "type": "soldier",
+      "mode": "march",
+      "prop": "spear",
+      "spread": 980,
+      "h": 360,
+      "rows": 3,
+      "vx": 70,
+      "dir": 1
+     },
+     {
+      "n": 2,
+      "type": "soldier",
+      "mode": "march",
+      "prop": "banner",
+      "spread": 520,
+      "h": 470,
+      "vx": 55,
+      "dir": 1,
+      "y": 1720
+     }
+    ]
+   },
+   "b": {
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "routes": [
+      {
+       "pts": [
+        [
+         0.82,
+         0.5
+        ],
+        [
+         0.62,
+         0.56
+        ],
+        [
+         0.4,
+         0.55
+        ]
+       ],
+       "dur": 0.8
+      }
+     ],
+     "pins": [
+      [
+       0.36,
+       0.55,
+       0.35
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "pull",
+   "p": {
+    "kind": "workshop",
+    "big": "forno",
+    "tod": "dusk",
+    "table": 0,
+    "actors": [
+     {
+      "n": 1,
+      "type": "woman",
+      "prop": "peel",
+      "mode": "idle",
+      "h": 860,
+      "x0": 460,
+      "spread": 0,
+      "y": 1690,
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "com"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "hand6",
+       "s": 2.9
+      }
+     ]
+    }
+   },
+   "c": {
+    "frame": {
+     "s": 1.75,
+     "x": 0.45,
+     "y": 0.62
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "panL",
+   "sec": 1,
+   "p": {
+    "tod": "night",
+    "sky": "village",
+    "gnd": "mud",
+    "props": [
+     {
+      "t": "icon",
+      "n": "forno",
+      "x": 0.2,
+      "y": 1120,
+      "s": 1.5
+     }
+    ],
+    "actors": [
+     {
+      "n": 7,
+      "type": "soldier",
+      "mode": "run",
+      "prop": "spear",
+      "spread": 760,
+      "x0": 700,
+      "h": 470,
+      "vx": -90,
+      "dir": -1,
+      "y": 1650
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "esconderam"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "fornocheio",
+       "s": 2.45
+      }
+     ],
+     "below": [
+      {
+       "n": 7,
+       "type": "soldier",
+       "mode": "run",
+       "spread": 900,
+       "h": 340,
+       "dir": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "orbit",
+   "p": {
+    "tod": "night",
+    "sky": "village",
+    "gnd": "mud",
+    "props": [
+     {
+      "t": "icon",
+      "n": "forno",
+      "x": 0.7,
+      "y": 1080,
+      "s": 1.75
+     },
+     {
+      "t": "icon",
+      "n": "helmet",
+      "x": 0.58,
+      "y": 1560,
+      "s": 0.8,
+      "rot": -0.5
+     },
+     {
+      "t": "icon",
+      "n": "helmet",
+      "x": 0.84,
+      "y": 1640,
+      "s": 0.95,
+      "rot": 0.7
+     }
+    ],
+    "actors": [
+     {
+      "n": 1,
+      "type": "woman",
+      "prop": "peel",
+      "mode": "idle",
+      "h": 760,
+      "x0": 400,
+      "spread": 0,
+      "y": 1660,
+      "dir": 1
+     }
+    ]
+   },
+   "pop": [
+    {
+     "n": "peel",
+     "word": "pá",
+     "s": 1.75,
+     "x": 0.66,
+     "y": 0.43,
+     "r": 250
+    }
+   ],
+   "b": {
+    "at": {
+     "word": "acabou"
+    },
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "fire",
+     "sky": "village",
+     "gnd": "mud",
+     "props": [
+      {
+       "t": "icon",
+       "n": "forno",
+       "x": 0.74,
+       "y": 1080,
+       "s": 1.75
+      },
+      {
+       "t": "icon",
+       "n": "helmet",
+       "x": 0.56,
+       "y": 1500,
+       "s": 1.0,
+       "rot": -0.9
+      },
+      {
+       "t": "icon",
+       "n": "helmet",
+       "x": 0.76,
+       "y": 1620,
+       "s": 1.2,
+       "rot": 1.1
+      },
+      {
+       "t": "icon",
+       "n": "helmet",
+       "x": 0.88,
+       "y": 1430,
+       "s": 0.8,
+       "rot": 0.5
+      }
+     ],
+     "actors": [
+      {
+       "n": 1,
+       "type": "woman",
+       "mode": "up",
+       "spread": 0,
+       "dir": 1,
+       "prop": "peel",
+       "h": 900,
+       "x0": 370,
+       "y": 1690
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "panL",
+   "p": {
+    "tod": "dawn",
+    "sky": "plain",
+    "gnd": "grass",
+    "road": 1,
+    "birds": 4,
+    "actors": [
+     {
+      "n": 6,
+      "type": "woman",
+      "mode": "run",
+      "prop": "peel",
+      "spread": 500,
+      "x0": 260,
+      "h": 430,
+      "dir": 1,
+      "y": 1640
+     },
+     {
+      "n": 3,
+      "type": "soldier",
+      "mode": "run",
+      "spread": 260,
+      "x0": 820,
+      "h": 360,
+      "dir": 1,
+      "y": 1530
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "para"
+    },
+    "tpl": "landscape",
+    "cam": "panR",
+    "p": {
+     "tod": "dawn",
+     "sky": "plain",
+     "gnd": "grass",
+     "road": 1,
+     "actors": [
+      {
+       "n": 4,
+       "type": "woman",
+       "mode": "run",
+       "prop": "peel",
+       "spread": 330,
+       "x0": 180,
+       "h": 560,
+       "vx": 120,
+       "dir": 1,
+       "y": 1690
+      },
+      {
+       "n": 5,
+       "type": "soldier",
+       "mode": "run",
+       "spread": 420,
+       "x0": 780,
+       "h": 420,
+       "vx": 150,
+       "dir": 1,
+       "y": 1560
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "tiltUp",
+   "p": {
+    "kind": "archive",
+    "tod": "night",
+    "table": 1,
+    "items": [
+     {
+      "n": "book",
+      "x": 0.24,
+      "s": 1.1
+     },
+     {
+      "n": "candle",
+      "x": 0.82,
+      "s": 1.0
+     },
+     {
+      "n": "scroll",
+      "x": 0.55,
+      "s": 0.9
+     }
+    ],
+    "actors": [
+     {
+      "n": 1,
+      "type": "scholar",
+      "prop": "book",
+      "mode": "idle",
+      "h": 700,
+      "x0": 230,
+      "spread": 0,
+      "y": 1370,
+      "dir": 1
+     },
+     {
+      "n": 1,
+      "type": "scholar",
+      "prop": "scroll",
+      "mode": "idle",
+      "h": 660,
+      "x0": 870,
+      "spread": 0,
+      "y": 1370,
+      "dir": -1
+     }
+    ]
+   },
+   "pop": [
+    {
+     "n": "lupa",
+     "word": "provas",
+     "s": 1.9,
+     "y": 0.45,
+     "r": 270
+    }
+   ],
+   "b": {
+    "frame": {
+     "s": 1.7,
+     "x": 0.27,
+     "y": 0.55
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "closeup",
+   "cam": "tiltDown",
+   "p": {
+    "tod": "dawn",
+    "icons": [
+     {
+      "n": "peel",
+      "x": -0.74,
+      "y": 0.12,
+      "s": 1.25
+     },
+     {
+      "n": "question",
+      "x": 0,
+      "y": -0.05,
+      "s": 2.2
+     },
+     {
+      "n": "book",
+      "x": 0.72,
+      "y": 0.18,
+      "s": 1.05
+     }
+    ],
+    "below": [
+     {
+      "n": 1,
+      "type": "woman",
+      "prop": "peel",
+      "mode": "idle",
+      "h": 480,
+      "x0": 250,
+      "spread": 0,
+      "dir": 1
+     },
+     {
+      "n": 1,
+      "type": "scholar",
+      "prop": "book",
+      "mode": "idle",
+      "h": 480,
+      "x0": 830,
+      "spread": 0,
+      "dir": -1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "Diga"
+    },
+    "frame": {
+     "s": 1.3,
+     "x": 0.5,
+     "y": 0.36
+    }
+   }
+  }
+ ],
+ "twist": {
+  "word": "acabou"
+ }
+}

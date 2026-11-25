@@ -92,33 +92,38 @@ for j,v in enumerate(CFG.get('versus',[])):
     shown.append((s0,'v')); print(f"versus {s0:.2f}-{e0:.2f} {v['text']!r}")
 os.makedirs(OUT,exist_ok=True)
 open(os.path.join(OUT,'caps.ass'),'w',encoding='utf-8').write(hdr+"\n".join(ev)+"\n")
+# cortes secundarios e reviravolta (gravados pelo retime.py na pasta do align.json)
+tm=os.path.join(os.path.dirname(os.path.abspath(sys.argv[1])),'timing.json')
+TM=json.load(open(tm)) if os.path.exists(tm) else {'subcuts':[],'twist':None}
+SUB=TM['subcuts']; TW=TM['twist']
+if not os.path.exists(tm): print('AVISO: sem timing.json (correr retime.py): sem cortes secundarios nem reviravolta')
 # ── zooms (interrupções de padrão, por omissao no maximo 3.0 s entre eles; config punch_gap) ──
 key=set(norm(x) for x in CFG.get('keywords',[]))
 P=[w[1] for w in words if norm(w[0]) in key]+[s for s,k in shown]
 GAP=float(CFG.get('punch_gap',3.0))
-allp=sorted(set([3.2]+CUTS+P)); fill=[]; ws_st=[w[1] for w in words]
+allp=sorted(set([3.2]+CUTS+SUB+P)); fill=[]; ws_st=[w[1] for w in words]
 for _ in range(6):
     allp=sorted(set(allp+fill)); added=False
     for a,b in zip(allp,allp[1:]+[DUR]):
         if b-a>GAP:
             mid=a+(b-a)/2; fill.append(min(ws_st,key=lambda x:abs(x-mid))); added=True
     if not added: break
-punch=sorted(set(P+fill)); punch=[p for p in punch if p>3.7 and all(abs(p-c)>0.5 for c in CUTS)]
+punch=sorted(set(P+fill)); punch=[p for p in punch if p>3.7 and all(abs(p-c)>0.5 for c in CUTS+SUB) and not (TW and TW['t']-0.5<p<TW['end'])]
 pr=[]
 for p in punch:
     if not pr or p-pr[-1]>=1.8: pr.append(p)
 punch=pr
-json.dump({'punch':punch,'tags':shown,'cuts':CUTS,'dur':DUR,'counter':bool(C),'words':[(w[0],w[1],w[2]) for w in words],'sfx':CFG.get('sfx',[]),'music':CFG.get('music','dark'),'drums':CFG.get('drums',[]),'loops':CFG.get('loops',[]),'loop_end':CFG.get('loop_end',True)},open(os.path.join(OUT,'punch.json'),'w'))
+json.dump({'punch':punch,'tags':shown,'cuts':CUTS,'subcuts':SUB,'twist':TW,'dur':DUR,'counter':bool(C),'words':[(w[0],w[1],w[2]) for w in words],'sfx':CFG.get('sfx',[]),'music':CFG.get('music','dark'),'drums':CFG.get('drums',[]),'loops':CFG.get('loops',[]),'loop_end':CFG.get('loop_end',True)},open(os.path.join(OUT,'punch.json'),'w'))
 br="gte(t,0)*0.07*exp(-max(0\\,t-0)*16)+gte(t,1.45)*0.2*exp(-max(0\\,t-1.45)*16)"
 for c in CUTS: br+=f"+gte(t,{c})*0.18*exp(-max(0\\,t-{c})*16)"
 if CFG.get('loop_end',True): br+=f"+gte(t,{DUR-0.35:.2f})*0.28*(t-{DUR-0.35:.2f})/0.35"   # flash a subir no fim -> liga ao flash do frame 0 (loop)
 zz="0.05*exp(-t*6)"+"".join(f"+gte(t,{p:.2f})*0.045*exp(-max(0\\,t-{p:.2f})*7)" for p in punch)
+if TW:   # aproximacao da camara na reviravolta (entra em 0,5 s; sai no corte seguinte ou desce em 0,5 s)
+    a,b=TW['t'],TW['end']
+    zz+=f"+gte(t,{a})*lt(t,{b})*0.10*min(1\\,(t-{a})/0.5)"+("" if TW['cut_at_end'] else f"*min(1\\,max(0\\,({b}-t)/0.5))")
 fc=f"""[0:v]scale=w='2*trunc(1080*(1+{zz})/2)':h=-2:eval=frame,crop=1080:1920,eq=brightness='{br}':eval=frame,ass=caps.ass,format=yuv420p[b];
-[4:v]scale=170:-1,format=rgba,colorchannelmixer=aa=0.55[wm];
+[2:v]scale=170:-1,format=rgba,colorchannelmixer=aa=0.55[wm];
 [b][wm]overlay=W-w-44:150[vo];
-[1:a]aformat=sample_rates=44100:channel_layouts=stereo,highpass=f=70,acompressor=threshold=0.1:ratio=3:attack=5:release=120,apad=whole_dur={DUR},asplit=3[v1][v2][v3];
-[2:a]volume=0.8[s];[s][v2]sidechaincompress=threshold=0.03:ratio=3:attack=8:release=300[sd];
-[3:a]volume=0.12[m];[m][v3]sidechaincompress=threshold=0.02:ratio=3:attack=20:release=500[md];
-[v1][sd][md]amix=inputs=3:weights='1 1 1':normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[a]"""
+[1:a]loudnorm=I=-14:TP=-1.5:LRA=9[a]"""
 open(os.path.join(OUT,'fc.txt'),'w').write(fc)
-print(len(units),'unidades; cortes',CUTS,'; punch:',[round(p,1) for p in punch],'; DUR',DUR)
+print(len(units),'unidades; cortes',CUTS,'; secundarios',SUB,'; reviravolta',TW and TW['t'],'; punch:',[round(p,1) for p in punch],'; DUR',DUR)

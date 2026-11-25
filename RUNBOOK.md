@@ -17,6 +17,7 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 
 ## 2. Ler resultados e aprender (se houver posts publicados)
 - Buffer: `get_account` (organização), `list_posts` com `status:["sent"]`, `includeMetrics:true`, canal `6b059f178541f09ecb8a802e` (TikTok `ogalosabetudo`). Se as métricas não vierem (falta de permissão), registar isso e seguir.
+- O Caderno de Regras Ativas tem no máximo 5 regras; a tarefa diária não acrescenta regras ativas novas (correções técnicas vão para este RUNBOOK, ideias para "Experiências"; só a auditoria semanal mexe no Caderno).
 - Atualizar a tabela em `learnings.md` (vídeo, estilo de gancho, visualizações, gostos, comentários, partilhas, retenção se existir) e escrever 2–3 linhas de conclusão: que estilo de gancho/overlay funcionou melhor.
 - Escolher o estilo de gancho do vídeo de hoje: usar o que está a ganhar, mas **a cada 3 vídeos testar um estilo diferente** (A/B). Estilos em `learnings.md`.
 - Uma vez por semana (segunda-feira): fazer 2–3 `WebSearch` sobre ganchos que estão a funcionar em TikTok de história/curiosidades (PT-BR) e anotar o que adaptar.
@@ -89,7 +90,7 @@ Cada vídeo ganha 1 "assinatura" que o torna diferente do anterior, sempre dentr
 4. **2–5 `alert_words`** a vermelho (o absurdo/perigo); as datas/números ficam a âmbar (já automático).
 5. Regra dos 2,5 s: nada fica parado mais de ~2,5 s. Como o render tem 8 planos animados, as interrupções vêm de zooms (`punch_gap` 3.0 por omissão), etiquetas, contadores, flash e SFX; se um plano durar >7 s sem evento novo, acrescenta uma `tag` ou um `sfx`.
 6. Cadência R2: `punch_gap` 2.0 e um evento novo (zoom, etiqueta, SFX, câmara) a cada ~2 s.
-7. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`).
+7. Fecho em loop: a pergunta final + CTA terminam com o flash a subir que liga ao frame 0 (`loop_end`). **Regra de marca:** qualquer reforço de loop (o último plano a ecoar o primeiro, ícone ou texto temático) acontece ANTES da palavra "Siga"; o CTA e o cocorico ficam intactos (o cocorico toca ~0,55 s depois do início do CTA, em `sfx.py`) e o flash do `loop_end` (últimos 0,35 s) mantém-se.
 Antes de montar, escreve uma linha em `learnings.md` (secção "Experiências"): o que vais testar neste vídeo (gancho, motivo, mood).
 
 ### 3.4 Montagem final

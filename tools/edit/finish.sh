@@ -10,6 +10,12 @@ ffmpeg -y -hide_banner -loglevel error -i v.mp4 -i nar.mp3 -i sfx.wav -i music.w
 TP=$(ffmpeg -hide_banner -i final_raw.mp4 -af ebur128=peak=true -f null - 2>&1 | grep -A1 "True peak" | grep Peak | tail -1 | awk '{print $2}')
 echo "true peak: $TP dBTP"
 if awk "BEGIN{exit !(${TP:--99} > -1.0)}"; then
-  ffmpeg -y -hide_banner -loglevel error -i final_raw.mp4 -c:v copy -af "alimiter=limit=0.84:level=false" -c:a aac -b:a 192k -movflags +faststart final.mp4
+  # o limitador mede picos de amostra; o pico verdadeiro (apos AAC) pode ficar acima de -1 dBTP: baixar ate cumprir
+  for LIM in 0.84 0.79 0.74 0.69; do
+    ffmpeg -y -hide_banner -loglevel error -i final_raw.mp4 -c:v copy -af "alimiter=limit=$LIM:level=false" -c:a aac -b:a 192k -movflags +faststart final.mp4
+    TP2=$(ffmpeg -hide_banner -i final.mp4 -af ebur128=peak=true -f null - 2>&1 | grep -A1 "True peak" | grep Peak | tail -1 | awk '{print $2}')
+    echo "limite $LIM -> true peak: $TP2 dBTP"
+    awk "BEGIN{exit !(${TP2:--99} <= -1.0)}" && break
+  done
 else cp final_raw.mp4 final.mp4; fi
 ls -la final.mp4; ffprobe -v error -show_entries format=duration -of csv=p=0 final.mp4

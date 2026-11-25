@@ -85,6 +85,11 @@ for i,(s0,tx,d,k) in enumerate(TAGS):
     shown.append((s0,k))
     ev.append(f"Dialogue: 2,{T(s0)},{T(e0)},Tag,,0,0,0,,{{\\an5\\pos(540,560)\\fscx60\\fscy60\\t(0,120,\\fscx112\\fscy112)\\t(120,220,\\fscx100\\fscy100)\\fad(0,180)}}  {tx}  ")
     print(f"tag {s0:.2f}-{e0:.2f} {tx!r} {k}")
+# ── dois selos lado a lado (opcional): {"versus":[{"at":..,"text":"HEROÍNA","x":300},..],"versus_end":segundos|{"word":..}}
+for j,v in enumerate(CFG.get('versus',[])):
+    s0=at(v['at']); e0=at(CFG['versus_end']) if 'versus_end' in CFG else min(s0+3.0,DUR)
+    ev.append(f"Dialogue: 3,{T(s0)},{T(e0)},Tag,,0,0,0,,{{\\an5\\pos({v.get('x',300+480*j)},{v.get('y',560)})\\frz{v.get('rot',4 if j==0 else -4)}\\fscx60\\fscy60\\t(0,120,\\fscx118\\fscy118)\\t(120,220,\\fscx100\\fscy100)\\fad(0,150)}} {v['text']} ")
+    shown.append((s0,'v')); print(f"versus {s0:.2f}-{e0:.2f} {v['text']!r}")
 os.makedirs(OUT,exist_ok=True)
 open(os.path.join(OUT,'caps.ass'),'w',encoding='utf-8').write(hdr+"\n".join(ev)+"\n")
 # ── zooms (interrupções de padrão, por omissao no maximo 3.0 s entre eles; config punch_gap) ──

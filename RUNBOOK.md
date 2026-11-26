@@ -22,6 +22,8 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 - Escolher o estilo de gancho do vídeo de hoje: usar o que está a ganhar, mas **a cada 3 vídeos testar um estilo diferente** (A/B). Estilos em `learnings.md`.
 - Uma vez por semana (segunda-feira): fazer 2–3 `WebSearch` sobre ganchos que estão a funcionar em TikTok de história/curiosidades (PT-BR) e anotar o que adaptar.
 
+**Acordo com o João (26/11/2026): analisar primeiro, mudar depois.** O João envia as métricas de cada vídeo 24 h depois de sair. Analisa-se o que correu bem ou mal e porquê, e só depois se decide **com ele** o que muda e se vale a pena. A tarefa diária aplica o que já está aprovado (incluindo a alternância de estilos de gancho) e regista ideias novas em `learnings.md` como propostas, sem alterar regras, RUNBOOK ou código por iniciativa própria (exceção: corrigir erros que impeçam ou estraguem a produção, avisando no resumo).
+
 ## 3. Produzir o vídeo N (N = `state.next_video`)
 Pasta de trabalho: `W=/home/claude/work/vNN` (NN com 2 dígitos).
 ```

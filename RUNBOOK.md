@@ -51,7 +51,9 @@ Exemplo no formato atual: `tools/examples/v11/story_draft_2planos.json` (os mais
 - `cam`: push, pull, panL, panR, tiltUp, tiltDown, orbit, drift. Alternar câmaras e templates entre planos seguidos.
 - `tod`: day, dusk, night, gold, grey, storm, dawn, fire. `sky`: castle, city, dunes, forest, huts, jungle, monastery, mountains, port, ruins, tower, village, volcano, plain. `gnd`: sand, mud, stone...
 - Atores `type`: woman, man, top, scholar, soldier, knight, king, monk, priest, wizard, pilgrim, sailor, hood. `mode`: idle, march, run, cheer, up, dance, cough, fan, kneel, point, look, shade, wave. Props de ator: spear, scroll, banner...
-- Ícones (`slam`, `icons[].n`, `props` `{t:"icon",n:...}`): anchor, bell, book, bread, candle, cannon, castle, clock, coins, crown, gallows, globe, hourglass, key, lantern, moon, mule, pig, plane, question, quill, ring, rooster, scroll, ship, shoe, shovel, snake, sun, sword, tart, throne, tomb, torch, tower, tulip.
+- Ícones (`slam`, `icons[].n`, `props` `{t:"icon",n:...}`): anchor, bell, book, bread, candle, cannon, castle, clock, coins, crown, gallows, globe, hourglass, key, lantern, moon, mule, pig, plane, question, quill, ring, rooster, scroll, ship, shoe, shovel, snake, sun, sword, tart, throne, tomb, torch, tower, tulip; do v11: forno, fornocheio, peel, paforno, hand6, helmet, lupa; do v12: galoassado, galocanta, galolevanta (animado: levanta-se em ~1 s), travessa, vieira, balanca. Ator extra: `judge` (juiz de gola clara).
+- Etiquetas (y≈0,29, até 3,45 s o gancho): em `closeup`, descer o ícone principal (`"y":0.3` a `0.5`) quando houver etiqueta nesse plano; `tiltUp`/`tiltDown` deslocam o assunto para trás da etiqueta (preferir drift/panR/push); etiqueta de uma só linha quando o assunto é grande.
+- O corte de um plano tem de ficar ≥0,8 s das pontas da frase (na reviravolta, prender o corte à palavra anterior se a palavra do twist for a última).
 - Variar: nunca duas entradas seguidas com o mesmo template+câmara; usar `closeup` com ícone nos momentos-chave; a última entrada é sempre um `closeup` com ícone `question` (ou o tema).
 - Pré-visualizar antes de renderizar:
 ```

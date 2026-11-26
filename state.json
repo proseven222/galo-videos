@@ -1,6 +1,6 @@
 {
- "next_video": 12,
- "next_publish_date": "2026-11-28",
+ "next_video": 13,
+ "next_publish_date": "2026-11-29",
  "timezone": "Europe/Lisbon",
  "publish_time": "18:00",
  "buffer_channel_id": "6b059f178541f09ecb8a802e",
@@ -32,6 +32,15 @@
    "hook_text": "UMA PADEIRA MATOU / 7 SOLDADOS COM UMA PÁ?",
    "file": "videos/galo_padeira_aljubarrota_v11b.mp4",
    "note": "R1-R8; objeto visível no frame 0; selos HEROÍNA?/LENDA?; 25/11: trocado no Buffer (a pedido do João) pela versão v11b com as novas regras (som medido, 17 planos, reviravolta)"
+  },
+  {
+   "video": 12,
+   "date": "2026-11-28",
+   "post_id": "6b08105ad91bf307683795ad",
+   "hook_style": "D-quase-catástrofe",
+   "hook_text": "UM GALO ASSADO / SALVOU UM HOMEM DA FORCA",
+   "file": "videos/galo_barcelos_v12.mp4",
+   "note": "R1-R5; selo LENDA DE BARCELOS; 23 planos (média 2,0 s); galo levanta-se e canta na reviravolta; mystic + heartbeat + cocorico; 45,9 s, -1,5 dBTP, 54 MB"
   }
  ],
  "errors": [],

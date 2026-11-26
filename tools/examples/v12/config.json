@@ -1,0 +1,27 @@
+{"hook": ["UM GALO ASSADO", "SALVOU UM HOMEM DA FORCA"],
+ "stamp": ["LENDA DE", "BARCELOS"],
+ "tags": [
+  {"at": {"word": "Barcelos"}, "text": "BARCELOS\nEM PÂNICO", "dur": 2.6},
+  {"at": {"word": "condenado"}, "text": "CONDENADO\nÀ FORCA", "dur": 1.7},
+  {"at": {"word": "aquele"}, "text": "VAI MESMO\nCANTAR?", "dur": 2.5, "kind": "t"},
+  {"at": {"word": "canta"}, "text": "O GALO CANTOU!", "dur": 1.8, "kind": "p"},
+  {"at": {"word": "liberta"}, "text": "O HOMEM\nÉ LIBERTADO", "dur": 1.5, "kind": "p"},
+  {"at": {"word": "Há"}, "text": "LENDA COM\nVÁRIAS VERSÕES", "dur": 2.8},
+  {"at": {"word": "acreditava"}, "text": "ACREDITA?\nSIM OU NÃO", "dur": 1.9}
+ ],
+ "keywords": ["galo", "assado", "crime", "forca", "inocente", "juiz", "mesa", "cantar", "erro", "lenda"],
+ "alert_words": ["crime", "pânico", "forca", "enforcarem"],
+ "sfx": [
+  {"at": 11.63, "kind": "pop", "gain": 0.6},
+  {"at": 14.66, "kind": "gavel", "gain": 0.55},
+  {"at": 23.35, "kind": "riser", "gain": 0.5},
+  {"at": 32.28, "kind": "chime", "gain": 0.55},
+  {"at": 32.72, "kind": "crow", "gain": 0.75},
+  {"at": 34.84, "kind": "chime", "gain": 0.55}
+ ],
+ "loops": [
+  {"kind": "heartbeat", "from": 27.55, "to": 31.6, "every": 0.95, "accel": 0.84, "min": 0.42, "gain": 0.55}
+ ],
+ "music": "mystic",
+ "punch_gap": 2.0,
+ "loop_end": true}

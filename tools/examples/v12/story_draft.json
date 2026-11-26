@@ -1,0 +1,836 @@
+{
+ "seed": 121,
+ "twist": {
+  "word": "canta"
+ },
+ "shots": [
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "push",
+   "slam": "galoassado",
+   "p": {
+    "kind": "tavern",
+    "tod": "night",
+    "ty": 1150,
+    "actors": [
+     {
+      "n": 2,
+      "types": [
+       "man",
+       "scholar"
+      ],
+      "mode": "idle",
+      "x0": 540,
+      "spread": 800,
+      "h": 560,
+      "y": 1180
+     }
+    ],
+    "items": [
+     {
+      "n": "candle",
+      "x": 0.14,
+      "s": 1.0,
+      "up": 60
+     },
+     {
+      "n": "candle",
+      "x": 0.86,
+      "s": 1.0,
+      "up": 60
+     }
+    ]
+   },
+   "b": {
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "sky": "village",
+     "gnd": "mud",
+     "props": [
+      {
+       "t": "icon",
+       "n": "gallows",
+       "x": 0.74,
+       "y": 980,
+       "s": 3.0
+      }
+     ],
+     "actors": [
+      {
+       "n": 1,
+       "type": "pilgrim",
+       "mode": "up",
+       "prop": "staff",
+       "spread": 0,
+       "x0": 330,
+       "h": 720,
+       "y": 1640,
+       "dir": 1
+      }
+     ],
+     "birds": 3
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "dusk",
+    "sky": "village",
+    "back": "castle",
+    "gnd": "mud",
+    "road": 1,
+    "birds": 4,
+    "smoke": 0.15,
+    "actors": [
+     {
+      "n": 5,
+      "types": [
+       "man",
+       "woman"
+      ],
+      "mode": "idle",
+      "spread": 820,
+      "h": 400,
+      "y": 1600
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "crime"
+    },
+    "tpl": "landscape",
+    "cam": "panL",
+    "p": {
+     "tod": "grey",
+     "sky": "village",
+     "gnd": "mud",
+     "clouds": 1,
+     "actors": [
+      {
+       "n": 6,
+       "types": [
+        "man",
+        "woman",
+        "hood"
+       ],
+       "mode": "run",
+       "spread": 860,
+       "h": 600,
+       "y": 1640
+      },
+      {
+       "n": 2,
+       "types": [
+        "man",
+        "woman"
+       ],
+       "mode": "up",
+       "spread": 560,
+       "h": 520,
+       "y": 1380
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "ninguém"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "question",
+       "s": 2.5
+      }
+     ],
+     "below": [
+      {
+       "n": 3,
+       "type": "hood",
+       "mode": "idle",
+       "spread": 820,
+       "h": 480,
+       "y": 1990
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "push",
+   "p": {
+    "tod": "gold",
+    "sky": "mountains",
+    "gnd": "sand",
+    "road": 1,
+    "birds": 3,
+    "actors": [
+     {
+      "n": 1,
+      "type": "pilgrim",
+      "mode": "march",
+      "prop": "staff",
+      "spread": 0,
+      "x0": 540,
+      "h": 780,
+      "vx": 30,
+      "y": 1680,
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "caminho"
+    },
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "routes": [
+      {
+       "pts": [
+        [
+         0.34,
+         0.585
+        ],
+        [
+         0.27,
+         0.52
+        ],
+        [
+         0.31,
+         0.455
+        ]
+       ],
+       "dur": 0.7
+      }
+     ],
+     "pins": [
+      [
+       0.34,
+       0.585,
+       0.0
+      ],
+      [
+       0.31,
+       0.455,
+       0.45
+      ]
+     ]
+    },
+    "pop": [
+     {
+      "n": "vieira",
+      "word": "Santiago",
+      "s": 1.7,
+      "x": 0.72,
+      "y": 0.43,
+      "r": 230
+     }
+    ]
+   },
+   "c": {
+    "at": {
+     "word": "Ele"
+    },
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "storm",
+     "sky": "castle",
+     "gnd": "mud",
+     "actors": [
+      {
+       "n": 1,
+       "type": "soldier",
+       "mode": "idle",
+       "prop": "spear",
+       "spread": 0,
+       "x0": 260,
+       "h": 660,
+       "y": 1650,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "pilgrim",
+       "mode": "kneel",
+       "spread": 0,
+       "x0": 540,
+       "h": 600,
+       "y": 1660,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "soldier",
+       "mode": "idle",
+       "prop": "spear",
+       "spread": 0,
+       "x0": 820,
+       "h": 660,
+       "y": 1650,
+       "dir": -1
+      }
+     ]
+    },
+    "pop": [
+     {
+      "n": "gallows",
+      "word": "forca",
+      "s": 1.55,
+      "y": 0.492,
+      "r": 230
+     }
+    ]
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "push",
+   "p": {
+    "kind": "hall",
+    "tod": "night",
+    "table": 0,
+    "shaft": 1,
+    "actors": [
+     {
+      "n": 1,
+      "type": "pilgrim",
+      "mode": "up",
+      "spread": 0,
+      "x0": 540,
+      "h": 820,
+      "y": 1620,
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "Pede"
+    },
+    "tpl": "interior",
+    "cam": "pull",
+    "p": {
+     "kind": "tavern",
+     "tod": "dusk",
+     "ty": 1180,
+     "actors": [
+      {
+       "n": 1,
+       "type": "judge",
+       "mode": "idle",
+       "spread": 0,
+       "x0": 540,
+       "h": 700,
+       "y": 1210,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "man",
+       "mode": "cheer",
+       "spread": 0,
+       "x0": 210,
+       "h": 520,
+       "y": 1210,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "scholar",
+       "mode": "wave",
+       "spread": 0,
+       "x0": 880,
+       "h": 520,
+       "y": 1210,
+       "dir": -1
+      }
+     ],
+     "items": [
+      {
+       "n": "galoassado",
+       "x": 0.5,
+       "s": 1.2,
+       "up": 70
+      },
+      {
+       "n": "tart",
+       "x": 0.22,
+       "s": 0.9,
+       "up": 40
+      },
+      {
+       "n": "candle",
+       "x": 0.85,
+       "s": 0.9,
+       "up": 55
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "panL",
+   "p": {
+    "kind": "tavern",
+    "tod": "night",
+    "ty": 1200,
+    "actors": [
+     {
+      "n": 1,
+      "type": "pilgrim",
+      "mode": "point",
+      "spread": 0,
+      "x0": 330,
+      "h": 720,
+      "y": 1320,
+      "dir": 1
+     },
+     {
+      "n": 1,
+      "type": "judge",
+      "mode": "idle",
+      "spread": 0,
+      "x0": 860,
+      "h": 640,
+      "y": 1230,
+      "dir": -1
+     }
+    ],
+    "items": [
+     {
+      "n": "galoassado",
+      "x": 0.62,
+      "s": 1.35,
+      "up": 75
+     },
+     {
+      "n": "candle",
+      "x": 0.9,
+      "s": 0.9,
+      "up": 55
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "galo"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "galoassado",
+       "s": 2.5
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "aquele"
+    },
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "hall",
+     "tod": "night",
+     "table": 0,
+     "actors": [
+      {
+       "n": 1,
+       "type": "pilgrim",
+       "mode": "point",
+       "spread": 0,
+       "x0": 360,
+       "h": 900,
+       "y": 1680,
+       "dir": 1
+      }
+     ]
+    },
+    "pop": [
+     {
+      "n": "gallows",
+      "word": "enforcarem",
+      "s": 1.55,
+      "x": 0.68,
+      "y": 0.472,
+      "r": 250
+     }
+    ]
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "push",
+   "p": {
+    "kind": "tavern",
+    "tod": "dusk",
+    "ty": 1180,
+    "actors": [
+     {
+      "n": 1,
+      "type": "judge",
+      "mode": "idle",
+      "spread": 0,
+      "x0": 540,
+      "h": 760,
+      "y": 1220,
+      "dir": -1
+     },
+     {
+      "n": 1,
+      "type": "man",
+      "mode": "cheer",
+      "spread": 0,
+      "x0": 190,
+      "h": 540,
+      "y": 1210,
+      "dir": 1
+     },
+     {
+      "n": 1,
+      "type": "scholar",
+      "mode": "cheer",
+      "spread": 0,
+      "x0": 900,
+      "h": 540,
+      "y": 1210,
+      "dir": -1
+     }
+    ],
+    "items": [
+     {
+      "n": "galoassado",
+      "x": 0.5,
+      "s": 1.1,
+      "up": 65
+     },
+     {
+      "n": "tart",
+      "x": 0.83,
+      "s": 0.9,
+      "up": 40
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "hora"
+    },
+    "tpl": "landscape",
+    "cam": "tiltUp",
+    "p": {
+     "tod": "storm",
+     "sky": "village",
+     "gnd": "mud",
+     "props": [
+      {
+       "t": "icon",
+       "n": "gallows",
+       "x": 0.64,
+       "y": 880,
+       "s": 3.3
+      }
+     ],
+     "actors": [
+      {
+       "n": 8,
+       "types": [
+        "man",
+        "woman",
+        "hood"
+       ],
+       "mode": "idle",
+       "spread": 1000,
+       "h": 400,
+       "rows": 2,
+       "y": 1700
+      },
+      {
+       "n": 1,
+       "type": "pilgrim",
+       "mode": "idle",
+       "spread": 0,
+       "x0": 300,
+       "h": 560,
+       "y": 1500,
+       "dir": 1
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "galo"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "gold",
+     "icons": [
+      {
+       "n": "galolevanta",
+       "s": 2.4
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "e"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "fire",
+     "icons": [
+      {
+       "n": "galocanta",
+       "y": 0.4,
+       "s": 2.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "pull",
+   "p": {
+    "kind": "tavern",
+    "tod": "dusk",
+    "ty": 1180,
+    "actors": [
+     {
+      "n": 1,
+      "type": "judge",
+      "mode": "up",
+      "spread": 0,
+      "x0": 240,
+      "h": 700,
+      "y": 1230,
+      "dir": 1
+     },
+     {
+      "n": 1,
+      "type": "man",
+      "mode": "up",
+      "spread": 0,
+      "x0": 920,
+      "h": 540,
+      "y": 1210,
+      "dir": -1
+     }
+    ],
+    "items": [
+     {
+      "n": "galocanta",
+      "x": 0.6,
+      "s": 1.6,
+      "up": 180
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "liberta"
+    },
+    "tpl": "landscape",
+    "cam": "pull",
+    "p": {
+     "tod": "dawn",
+     "sky": "plain",
+     "gnd": "grass",
+     "road": 1,
+     "birds": 7,
+     "actors": [
+      {
+       "n": 1,
+       "type": "pilgrim",
+       "mode": "wave",
+       "prop": "staff",
+       "spread": 0,
+       "x0": 540,
+       "h": 760,
+       "y": 1650,
+       "dir": 1
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "outras"
+    },
+    "tpl": "closeup",
+    "cam": "panR",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "scroll",
+       "x": -0.55,
+       "y": 0.42,
+       "s": 1.35,
+       "rot": -0.18
+      },
+      {
+       "n": "scroll",
+       "x": 0.55,
+       "y": 0.42,
+       "s": 1.35,
+       "rot": 0.18
+      },
+      {
+       "n": "question",
+       "x": 0,
+       "y": 0.3,
+       "s": 1.4
+      }
+     ],
+     "below": [
+      {
+       "n": 4,
+       "types": [
+        "hood",
+        "man",
+        "sailor",
+        "woman"
+       ],
+       "mode": "idle",
+       "spread": 900,
+       "h": 450,
+       "y": 1990
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "até"
+    },
+    "tpl": "closeup",
+    "cam": "orbit",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "globe",
+       "x": 0,
+       "y": 0.05,
+       "s": 2.1
+      },
+      {
+       "n": "rooster",
+       "x": -0.9,
+       "y": -0.62,
+       "s": 0.8
+      },
+      {
+       "n": "rooster",
+       "x": 0.9,
+       "y": 0.55,
+       "s": 0.8
+      },
+      {
+       "n": "question",
+       "x": 0.88,
+       "y": -0.62,
+       "s": 0.75
+      },
+      {
+       "n": "question",
+       "x": -0.9,
+       "y": 0.55,
+       "s": 0.75
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "closeup",
+   "cam": "drift",
+   "p": {
+    "tod": "gold",
+    "icons": [
+     {
+      "n": "galocanta",
+      "x": -0.2,
+      "y": 0.48,
+      "s": 1.6
+     },
+     {
+      "n": "question",
+      "x": 0.74,
+      "y": 0.28,
+      "s": 1.25
+     }
+    ],
+    "below": [
+     {
+      "n": 2,
+      "types": [
+       "pilgrim",
+       "judge"
+      ],
+      "mode": "idle",
+      "spread": 620,
+      "h": 470,
+      "y": 1990
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "Comente"
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "galoassado",
+       "y": 0.36,
+       "s": 2.15
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

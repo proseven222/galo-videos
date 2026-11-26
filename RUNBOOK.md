@@ -63,6 +63,15 @@ ffmpeg -y -loglevel error -pattern_type glob -i 'out/sNN_*.jpg' -filter_complex 
 ```
 (os caminhos para `still.js` têm de ser absolutos). Corrigir ícones/planos estranhos (um ícone que não se reconheça muda-se por outro).
 
+### 3.1.1 Abertura (aprovado pelo João a 26/11/2026, a partir do vídeo 13; verificação obrigatória)
+- **0,0–3 s:** a "coisa" da história é o objeto central desde 0,0 s (a própria ação, objeto ou animal; nunca um símbolo indireto, como um relógio para uma dança). No máximo **3 blocos de texto**: título do gancho + legenda + **só um** de selo ou contador. Sem etiquetas nem `versus` antes dos 3,45 s.
+- **3–7 s:** pelo menos **2 mudanças de imagem** (corte, `b`/`c` com `"at"` se for preciso), nunca uma figura parada. Uma etiqueta que **crie curiosidade** com factos da narração entre 3,45 e 7 s; a data pode ir junta, mas não sozinha (importante quando a 2.ª frase começa por uma data: v15, v17, v19, v21, v24, v25).
+- Depois do `retime.py`, escrever o `config.json` e **antes do render** correr:
+```
+python3 tools/edit/check_abertura.py $W/align.json $W/config.json   # tem de dizer ABERTURA OK; se reprovar, corrigir a história ou o config e repetir
+```
+- Língua: **PT-BR mantém-se** (decisão do João, 26/11: quer chegar a Portugal e ao Brasil). Não propor nem testar PT-PT.
+
 ### 3.2 Render (cerca de 4–6 minutos)
 ```
 cd /home/claude/kit && rm -f out/doneNN.txt && ./renderv.sh NN      # gera out/videoNN_silent.mp4

@@ -17,7 +17,7 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 
 ## 2. Ler resultados e aprender (se houver posts publicados)
 - Buffer: `get_account` (organização), `list_posts` com `status:["sent"]`, `includeMetrics:true`, canal `6b059f178541f09ecb8a802e` (TikTok `ogalosabetudo`). Se as métricas não vierem (falta de permissão), registar isso e seguir.
-- O Caderno de Regras Ativas tem no máximo 5 regras; a tarefa diária não acrescenta regras ativas novas (correções técnicas vão para este RUNBOOK, ideias para "Experiências"; só a auditoria semanal mexe no Caderno).
+- O Caderno de Regras Ativas tem no máximo 5 regras; a tarefa diária não acrescenta regras ativas novas (correções técnicas vão para este RUNBOOK, ideias para "Experiências"; a auditoria semanal de domingo só apresenta propostas; o Caderno só muda depois de o João concordar).
 - Atualizar a tabela em `learnings.md` (vídeo, estilo de gancho, visualizações, gostos, comentários, partilhas, retenção se existir) e escrever 2–3 linhas de conclusão: que estilo de gancho/overlay funcionou melhor.
 - Escolher o estilo de gancho do vídeo de hoje: usar o que está a ganhar, mas **a cada 3 vídeos testar um estilo diferente** (A/B). Estilos em `learnings.md`.
 - Uma vez por semana (segunda-feira): fazer 2–3 `WebSearch` sobre ganchos que estão a funcionar em TikTok de história/curiosidades (PT-BR) e anotar o que adaptar.

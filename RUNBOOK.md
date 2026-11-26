@@ -13,7 +13,7 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 ## 1. Preparação (sessão nova)
 1. `add_repo` `proseven222/galo-videos` com `access: push`, clonar para `/home/claude/galo-videos` (clone raso, timeout longo) e `register_repo_root`.
 2. `bash tools/setup.sh` (copia o kit para `/home/claude/kit`, que é o caminho fixo usado pelos scripts).
-3. Ler `state.json` e `learnings.md`, incluindo o **"Caderno de Regras Ativas"** (R1–R5, atualizado pela auditoria semanal de domingo): aplica-as todas ao vídeo do dia (ver 3.1, 3.3, 3.5 e 4.3) e regista em "Experiências" que regras estás a testar.
+3. Ler `state.json` e `learnings.md`, incluindo o **"Caderno de Regras Ativas"** (R1–R5; só muda com o OK do João): aplica-as todas ao vídeo do dia (ver 3.1, 3.3, 3.5 e 4.3) e regista em "Experiências" que regras estás a testar.
 
 ## 2. Ler resultados e aprender (se houver posts publicados)
 - Buffer: `get_account` (organização), `list_posts` com `status:["sent"]`, `includeMetrics:true`, canal `6b059f178541f09ecb8a802e` (TikTok `ogalosabetudo`). Se as métricas não vierem (falta de permissão), registar isso e seguir.

@@ -1,6 +1,6 @@
 {
- "next_video": 13,
- "next_publish_date": "2026-11-29",
+ "next_video": 14,
+ "next_publish_date": "2026-11-30",
  "timezone": "Europe/Lisbon",
  "publish_time": "18:00",
  "buffer_channel_id": "6b059f178541f09ecb8a802e",
@@ -41,9 +41,26 @@
    "hook_text": "UM GALO ASSADO / SALVOU UM HOMEM DA FORCA",
    "file": "videos/galo_barcelos_v12.mp4",
    "note": "R1-R5; selo LENDA DE BARCELOS; 23 planos (média 2,0 s); galo levanta-se e canta na reviravolta; mystic + heartbeat + cocorico; 45,9 s, -1,5 dBTP, 54 MB"
+  },
+  {
+   "video": 13,
+   "date": "2026-11-29",
+   "post_id": "6b095f61658222306c05274f",
+   "hook_style": "C-contradição/mito",
+   "hook_text": "COROADA JÁ MORTA? / NÃO HÁ FONTES",
+   "file": "videos/galo_ines_de_castro_v13.mp4",
+   "note": "R1-R5 + abertura 3.1.1 OK; selo INÊS DE CASTRO · EXECUTADA EM 1355; 29 planos (média 1,9 s); coroa desfaz-se na reviravolta; dark + sino + pizzicato; 54,7 s, -1,5 dBTP, 64 MB"
   }
  ],
- "errors": [],
+ "errors": [
+  {
+   "date": "2026-11-27",
+   "step": "calendário (4b.5)",
+   "video": 13,
+   "error": "Publicação do data.js no artifact recusada pelo classificador de permissões do modo automático (motivo indicado: ação destrutiva ou indesejada). A ferramenta Artifact exige file_path (dashboard/index.html inalterado) junto com files data.js; não se tentou contornar. O painel continua na versão 1795690647-a7f3 (sem o v13). O vídeo está agendado (post 6b095f61658222306c05274f).",
+   "pending": "Com autorização do João: correr python3 tools/dashboard_build.py e publicar o data.js."
+  }
+ ],
  "dashboard": {
   "artifact_slug": "41491213-d825-41f1-a0a0-559a4d2216d2",
   "url": "https://claude.ai/artifact/94adzXiipLdqhnysnWTHEZ",

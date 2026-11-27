@@ -13,7 +13,7 @@ function fig(q, type, x, y, h, o = {}) {
   else { q.lineWidth = 7; q.beginPath(); q.moveTo(-3, -44); q.lineTo(-3 + sw * 13, 0); q.moveTo(3, -44); q.lineTo(3 - sw * 13, 0); q.stroke(); }
   // tronco
   q.beginPath(); q.moveTo(-13, -84); q.lineTo(13, -84);
-  if (type === 'top' || type === 'man' || type === 'scholar' || type === 'king') { q.lineTo(17, -52); q.lineTo(21, -24); q.lineTo(-21, -24); q.lineTo(-17, -52); }
+  if (type === 'top' || type === 'man' || type === 'scholar' || type === 'king' || type === 'prince') { q.lineTo(17, -52); q.lineTo(21, -24); q.lineTo(-21, -24); q.lineTo(-17, -52); }
   else { q.lineTo(15, -50); q.lineTo(-15, -50); }
   q.closePath(); q.fill();
   if (type === 'king') { q.beginPath(); q.moveTo(-14, -84); q.lineTo(-30, -6); q.lineTo(-10, -30); q.closePath(); q.fill(); }
@@ -29,6 +29,7 @@ function fig(q, type, x, y, h, o = {}) {
   else if (type === 'pilgrim') { q.beginPath(); q.ellipse(0, -97, 16, 4, 0, 0, 7); q.fill(); q.fillRect(-8, -107, 16, 10); }
   else if (type === 'scholar') { q.fillRect(-10, -100, 20, 3); q.fillRect(-7, -105, 14, 5); }
   else if (type === 'sailor') { q.fillRect(-9, -100, 18, 5); q.beginPath(); q.ellipse(0, -97, 11, 3, 0, 0, 7); q.fill(); }
+  else if (type === 'prince') { q.fillRect(-8.5, -101, 17, 4); for (const x of [-6, 0, 6]) { q.beginPath(); q.moveTo(x - 3, -100); q.lineTo(x, -108); q.lineTo(x + 3, -100); q.closePath(); q.fill(); } }
   else if (type === 'judge') { q.fillRect(-9, -101, 18, 5); q.beginPath(); q.ellipse(0, -101, 9, 11, 0, Math.PI, 0); q.fill(); q.beginPath(); q.arc(-8, -90, 5, 0, 7); q.arc(8, -90, 5, 0, 7); q.arc(-9, -83, 4.5, 0, 7); q.arc(9, -83, 4.5, 0, 7); q.fill(); q.fillStyle = '#e8d4a2'; q.beginPath(); q.moveTo(-6, -83); q.lineTo(6, -83); q.lineTo(8, -66); q.lineTo(1.5, -66); q.lineTo(0, -76); q.lineTo(-1.5, -66); q.lineTo(-8, -66); q.closePath(); q.fill(); q.fillStyle = col; }
   else if (type === 'priest') { q.fillRect(-9, -100, 18, 4); q.fillRect(-6, -108, 12, 8); }
   // braços

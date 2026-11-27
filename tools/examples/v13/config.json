@@ -1,0 +1,37 @@
+{"hook": ["COROADA JÁ MORTA?", "NÃO HÁ FONTES"],
+ "stamp": ["INÊS DE CASTRO", "EXECUTADA EM 1355"],
+ "tags": [
+  {"at": {"word": "nobre"}, "text": "QUEM MANDOU\nMATÁ-LA?", "dur": 2.8, "kind": "t"},
+  {"at": {"word": "ordem"}, "text": "ORDEM DO REI\nAFONSO IV", "dur": 2.0, "kind": "p"},
+  {"at": {"word": "temia"}, "text": "O MEDO\nDO REI", "dur": 2.2},
+  {"at": {"word": "virou"}, "text": "PEDRO\nVIRA REI", "dur": 2.0},
+  {"at": {"word": "casado"}, "text": "CASAMENTO\nSECRETO?", "dur": 2.1, "kind": "t"},
+  {"at": {"word": "só"}, "text": "SÓ A PALAVRA\nDELE", "dur": 1.9, "kind": "p"},
+  {"at": {"word": "sem"}, "text": "SEM FONTES", "dur": 1.4, "kind": "p"}
+ ],
+ "versus": [
+  {"at": {"word": "real"}, "text": "REAL?", "x": 300},
+  {"at": {"word": "lenda?"}, "text": "LENDA?", "x": 780}
+ ],
+ "versus_end": {"word": "Siga"},
+ "keywords": ["rainha", "morta", "amante", "executada", "rei", "família", "herdeiro", "revoltou", "segredo", "palavra", "coroação", "fontes", "túmulos"],
+ "alert_words": ["morta", "executada", "revoltou", "segredo", "fontes"],
+ "sfx": [
+  {"at": 3.0, "kind": "riser", "gain": 0.5},
+  {"at": 13.2, "kind": "belllo", "gain": 0.6},
+  {"at": 14.06, "kind": "stab", "gain": 0.55},
+  {"at": 22.3, "kind": "rustle", "gain": 0.5},
+  {"at": 26.8, "kind": "bellhi", "gain": 0.5},
+  {"at": 29.5, "kind": "riser", "gain": 0.5},
+  {"at": 33.09, "kind": "chime", "gain": 0.55},
+  {"at": 37.65, "kind": "rustle", "gain": 0.5},
+  {"at": 40.39, "kind": "stab", "gain": 0.55}
+ ],
+ "loops": [
+  {"kind": "pizz", "from": 35.35, "to": 39.6, "every": 0.55, "accel": 0.93, "min": 0.28, "gain": 0.4},
+  {"kind": "belllo", "from": 41.7, "to": 47.6, "every": 2.0, "gain": 0.35}
+ ],
+ "drums": [{"from": 20.8, "to": 22.1}],
+ "music": "dark",
+ "punch_gap": 2.0,
+ "loop_end": true}

@@ -1,0 +1,963 @@
+{
+ "seed": 131,
+ "twist": {
+  "word": "sem"
+ },
+ "shots": [
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "push",
+   "slam": "rainhamorta",
+   "p": {
+    "kind": "hall",
+    "tod": "night",
+    "table": 0,
+    "items": [
+     {
+      "n": "candle",
+      "x": 0.12,
+      "s": 1.2,
+      "up": 60
+     },
+     {
+      "n": "candle",
+      "x": 0.88,
+      "s": 1.2,
+      "up": 60
+     }
+    ]
+   },
+   "b": {
+    "tpl": "interior",
+    "cam": "pull",
+    "p": {
+     "kind": "hall",
+     "tod": "night",
+     "table": 0,
+     "shaft": 1,
+     "actors": [
+      {
+       "n": 1,
+       "type": "scholar",
+       "x0": 150,
+       "spread": 0,
+       "h": 500,
+       "y": 1560,
+       "mode": "kneel",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 930,
+       "spread": 0,
+       "h": 500,
+       "y": 1560,
+       "mode": "kneel",
+       "dir": -1
+      },
+      {
+       "n": 1,
+       "type": "knight",
+       "x0": 80,
+       "spread": 0,
+       "h": 430,
+       "y": 1400,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "hood",
+       "x0": 1010,
+       "spread": 0,
+       "h": 430,
+       "y": 1400,
+       "mode": "idle",
+       "dir": -1
+      }
+     ],
+     "items": [
+      {
+       "n": "rainhacoroada",
+       "x": 0.5,
+       "s": 1.95,
+       "up": 355
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "push",
+   "p": {
+    "tod": "gold",
+    "sky": "castle",
+    "gnd": "grass",
+    "birds": 3,
+    "actors": [
+     {
+      "n": 1,
+      "type": "woman",
+      "x0": 540,
+      "spread": 0,
+      "h": 820,
+      "y": 1700,
+      "mode": "idle",
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "nobre",
+     "nth": 0
+    },
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "routes": [
+      {
+       "pts": [
+        [
+         0.3,
+         0.465
+        ],
+        [
+         0.25,
+         0.54
+        ],
+        [
+         0.3,
+         0.605
+        ]
+       ],
+       "dur": 0.75
+      }
+     ],
+     "pins": [
+      [
+       0.3,
+       0.465,
+       0.0
+      ],
+      [
+       0.3,
+       0.605,
+       0.5
+      ]
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "príncipe",
+     "nth": 0
+    },
+    "tpl": "landscape",
+    "cam": "drift",
+    "p": {
+     "tod": "dusk",
+     "sky": "castle",
+     "gnd": "grass",
+     "birds": 2,
+     "actors": [
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 370,
+       "spread": 0,
+       "h": 720,
+       "y": 1660,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "prince",
+       "x0": 720,
+       "spread": 0,
+       "h": 780,
+       "y": 1660,
+       "mode": "idle",
+       "dir": -1
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "Tiveram",
+     "nth": 0
+    },
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "gold",
+     "sky": "village",
+     "gnd": "grass",
+     "actors": [
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 250,
+       "spread": 0,
+       "h": 660,
+       "y": 1580,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "prince",
+       "x0": 830,
+       "spread": 0,
+       "h": 700,
+       "y": 1580,
+       "mode": "idle",
+       "dir": -1
+      },
+      {
+       "n": 1,
+       "type": "man",
+       "x0": 385,
+       "spread": 0,
+       "h": 300,
+       "y": 1700,
+       "mode": "wave",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 495,
+       "spread": 0,
+       "h": 270,
+       "y": 1700,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "man",
+       "x0": 605,
+       "spread": 0,
+       "h": 320,
+       "y": 1700,
+       "mode": "idle",
+       "dir": -1
+      },
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 715,
+       "spread": 0,
+       "h": 250,
+       "y": 1700,
+       "mode": "wave",
+       "dir": -1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "grey",
+    "sky": "town",
+    "back": "castle",
+    "gnd": "mud",
+    "road": 1,
+    "birds": 5,
+    "actors": [
+     {
+      "n": 1,
+      "type": "woman",
+      "x0": 520,
+      "spread": 0,
+      "h": 560,
+      "y": 1660,
+      "mode": "idle",
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "em",
+     "nth": 1
+    },
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "pins": [
+      [
+       0.3,
+       0.605,
+       0.0
+      ]
+     ],
+     "icons": [
+      {
+       "n": "castle",
+       "x": 0.58,
+       "y": 0.56,
+       "s": 1.4
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "executada",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "bg": "#120c08",
+     "glowc": "255,170,90",
+     "icons": [
+      {
+       "n": "velaapagada",
+       "s": 2.0,
+       "y": 0.42
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "rei",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "court",
+     "tod": "night",
+     "table": 0,
+     "actors": [
+      {
+       "n": 1,
+       "type": "king",
+       "x0": 540,
+       "spread": 0,
+       "h": 780,
+       "y": 1640,
+       "mode": "point",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "soldier",
+       "x0": 170,
+       "spread": 0,
+       "h": 560,
+       "y": 1640,
+       "mode": "idle",
+       "dir": 1,
+       "prop": "spear"
+      },
+      {
+       "n": 1,
+       "type": "soldier",
+       "x0": 910,
+       "spread": 0,
+       "h": 560,
+       "y": 1640,
+       "mode": "idle",
+       "dir": -1,
+       "prop": "spear"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "drift",
+   "p": {
+    "kind": "hall",
+    "tod": "dusk",
+    "table": 0,
+    "shaft": 1,
+    "actors": [
+     {
+      "n": 1,
+      "type": "king",
+      "x0": 540,
+      "spread": 0,
+      "h": 860,
+      "y": 1660,
+      "mode": "shade",
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "família",
+     "nth": 0
+    },
+    "tpl": "landscape",
+    "cam": "panL",
+    "p": {
+     "tod": "dusk",
+     "sky": "castle",
+     "gnd": "sand",
+     "actors": [
+      {
+       "n": 3,
+       "types": [
+        "man",
+        "scholar",
+        "woman"
+       ],
+       "mode": "idle",
+       "spread": 560,
+       "h": 600,
+       "y": 1660
+      },
+      {
+       "n": 1,
+       "type": "knight",
+       "x0": 120,
+       "spread": 0,
+       "h": 560,
+       "y": 1620,
+       "mode": "idle",
+       "dir": 1,
+       "prop": "banner"
+      },
+      {
+       "n": 1,
+       "type": "knight",
+       "x0": 940,
+       "spread": 0,
+       "h": 560,
+       "y": 1620,
+       "mode": "idle",
+       "dir": -1,
+       "prop": "banner"
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "herdeiro",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "gold",
+     "icons": [
+      {
+       "n": "throne",
+       "s": 1.9,
+       "y": 0.2,
+       "x": -0.12
+      },
+      {
+       "n": "crown",
+       "s": 0.95,
+       "x": 0.66,
+       "y": -0.12
+      }
+     ],
+     "below": [
+      {
+       "n": 1,
+       "type": "prince",
+       "x0": 820,
+       "spread": 0,
+       "h": 600,
+       "y": 1900,
+       "mode": "idle",
+       "dir": -1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "landscape",
+   "cam": "push",
+   "p": {
+    "tod": "fire",
+    "sky": "castle",
+    "gnd": "mud",
+    "actors": [
+     {
+      "n": 5,
+      "types": [
+       "soldier",
+       "man"
+      ],
+      "mode": "march",
+      "spread": 900,
+      "h": 430,
+      "y": 1420,
+      "dir": 1,
+      "prop": "torch"
+     },
+     {
+      "n": 1,
+      "type": "prince",
+      "x0": 540,
+      "spread": 0,
+      "h": 860,
+      "y": 1760,
+      "mode": "up",
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "mas",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "pull",
+    "p": {
+     "kind": "hall",
+     "tod": "dusk",
+     "table": 0,
+     "shaft": 1,
+     "actors": [
+      {
+       "n": 1,
+       "type": "prince",
+       "x0": 330,
+       "spread": 0,
+       "h": 760,
+       "y": 1640,
+       "mode": "point",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "king",
+       "x0": 760,
+       "spread": 0,
+       "h": 780,
+       "y": 1640,
+       "mode": "point",
+       "dir": -1
+      }
+     ],
+     "items": [
+      {
+       "n": "scroll",
+       "x": 0.5,
+       "s": 1.1,
+       "up": 370
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "E",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "gold",
+     "icons": [
+      {
+       "n": "crown",
+       "s": 2.6,
+       "y": 0.15
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "virou",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "court",
+     "tod": "gold",
+     "table": 0,
+     "actors": [
+      {
+       "n": 1,
+       "type": "king",
+       "x0": 540,
+       "spread": 0,
+       "h": 820,
+       "y": 1660,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "man",
+       "x0": 150,
+       "spread": 0,
+       "h": 540,
+       "y": 1680,
+       "mode": "cheer",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "knight",
+       "x0": 930,
+       "spread": 0,
+       "h": 540,
+       "y": 1680,
+       "mode": "up",
+       "dir": -1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "interior",
+   "cam": "panL",
+   "p": {
+    "kind": "hall",
+    "tod": "night",
+    "table": 0,
+    "actors": [
+     {
+      "n": 1,
+      "type": "king",
+      "x0": 720,
+      "spread": 0,
+      "h": 800,
+      "y": 1650,
+      "mode": "wave",
+      "dir": -1
+     },
+     {
+      "n": 3,
+      "types": [
+       "scholar",
+       "man",
+       "hood"
+      ],
+      "mode": "idle",
+      "spread": 300,
+      "h": 520,
+      "y": 1680,
+      "x0": 250,
+      "dir": 1
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "disse",
+     "nth": 0
+    },
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "sky": "monastery",
+     "gnd": "stone",
+     "actors": [
+      {
+       "n": 1,
+       "type": "king",
+       "x0": 390,
+       "spread": 0,
+       "h": 760,
+       "y": 1680,
+       "mode": "idle",
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "type": "woman",
+       "x0": 700,
+       "spread": 0,
+       "h": 690,
+       "y": 1680,
+       "mode": "idle",
+       "dir": -1
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "casado",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "ring",
+       "s": 2.5,
+       "y": 0.2
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "Mas",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "hall",
+     "tod": "night",
+     "table": 0,
+     "shaft": 1,
+     "actors": [
+      {
+       "n": 1,
+       "type": "king",
+       "x0": 540,
+       "spread": 0,
+       "h": 900,
+       "y": 1700,
+       "mode": "point",
+       "dir": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "closeup",
+   "cam": "push",
+   "p": {
+    "tod": "night",
+    "icons": [
+     {
+      "n": "rainhacoroada",
+      "s": 2.0,
+      "y": 0.34
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "Só",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "panR",
+    "p": {
+     "kind": "archive",
+     "tod": "night",
+     "ty": 1250,
+     "actors": [
+      {
+       "n": 1,
+       "type": "scholar",
+       "x0": 330,
+       "spread": 0,
+       "h": 640,
+       "y": 1350,
+       "mode": "idle",
+       "dir": 1,
+       "prop": "book"
+      }
+     ],
+     "items": [
+      {
+       "n": "book",
+       "x": 0.66,
+       "s": 1.5,
+       "up": 80
+      },
+      {
+       "n": "candle",
+       "x": 0.9,
+       "s": 1.0,
+       "up": 70
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "século",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "book",
+       "s": 2.7,
+       "y": 0.2
+      },
+      {
+       "n": "lupa",
+       "s": 1.35,
+       "x": 0.5,
+       "y": 0.55
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "sem",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "bg": "#120c08",
+     "icons": [
+      {
+       "n": "coroasome",
+       "s": 1.9,
+       "y": 0.52
+      }
+     ]
+    }
+   }
+  },
+  {
+   "sec": 1,
+   "tpl": "closeup",
+   "cam": "drift",
+   "p": {
+    "tod": "gold",
+    "icons": [
+     {
+      "n": "tumulos",
+      "s": 2.0,
+      "y": 0.15
+     }
+    ],
+    "below": [
+     {
+      "n": 3,
+      "types": [
+       "man",
+       "woman",
+       "scholar"
+      ],
+      "mode": "idle",
+      "spread": 700,
+      "h": 460,
+      "y": 1920
+     }
+    ]
+   },
+   "b": {
+    "at": {
+     "word": "estão",
+     "nth": 0
+    },
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "church",
+     "tod": "dusk",
+     "table": 0,
+     "ty": 1330,
+     "window": 1,
+     "shaft": 1,
+     "items": [
+      {
+       "n": "tumulos",
+       "x": 0.5,
+       "s": 2.3,
+       "up": 260
+      }
+     ]
+    }
+   },
+   "c": {
+    "at": {
+     "word": "Qual",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "tumulos",
+       "s": 1.05,
+       "x": -0.58,
+       "y": 0.2
+      },
+      {
+       "n": "rainhacoroada",
+       "s": 1.3,
+       "x": 0.57,
+       "y": 0.12
+      }
+     ]
+    }
+   },
+   "d": {
+    "at": {
+     "word": "Comente",
+     "nth": 0
+    },
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "rainhamorta",
+       "s": 1.9,
+       "y": 0.52
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

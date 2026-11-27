@@ -133,14 +133,20 @@ Verificar (obrigatório): **primeiro extrair fotogramas em 0.0 s e 0.1 s e confi
 7. Atualizar `state.json`: `next_video += 1`, `next_publish_date += 1 dia`, adicionar a `published` `{video, date, post_id, hook_style, hook_text}`. Fazer commit e push de `state.json` e `learnings.md`.
 
 ## 4b. Atualizar o calendário (dashboard) — SEMPRE depois de agendar
+**Pedido do João (27/11/2026):** o calendário é publicado em conjunto com os agendamentos dos vídeos. O agendamento só fica concluído depois de o `data.js` estar publicado. Vale para a tarefa diária e para qualquer sessão que crie, altere ou apague um agendamento no Buffer.
 O painel do utilizador é um artifact (slug em `state.json` → `dashboard.artifact_slug`; ficheiros `index.html` + `data.js`). Só o `data.js` muda.
 1. Miniatura: `ffmpeg -y -loglevel error -ss 1.9 -i $W/final.mp4 -frames:v 1 -vf scale=216:-2 -q:v 6 dashboard/thumbs/vNN.jpg`
 2. Acrescentar a `dashboard/posts.json` (lista `posts`) um item: `{"id":"vNN","video":N,"date":"AAAA-MM-DD","time":"18:00","status":"scheduled","title":"<tema curto (local, ano)>","tiktokTitle":"<título do post>","hookStyle":"<estilo>","hookText":"<texto do gancho em maiúsculas>","videoUrl":"<URL raw do GitHub>","bufferPostId":"<id>","duration":<s>,"description":"<descrição completa enviada ao TikTok, com quebras de linha \n>"}`.
 3. Marcar como publicados os vídeos cuja data já passou: `"status":"published"` (o painel também o faz sozinho pela hora, mas assim fica registado). Se um agendamento falhou, `"status":"error"`.
 4. `python3 tools/dashboard_build.py` → gera `/home/claude/dash/data.js` (miniaturas embutidas em base64).
-5. `mcp__claude-artifacts__get_artifact` com o slug → `version`; depois `mcp__claude-artifacts__publish_files` com `slug`, `base_version`=version, `mode:"patch"`, `files:[{as:"data.js", path:"/home/claude/dash/data.js"}]`. NÃO republicar o `index.html` (só se o painel tiver sido apagado: nesse caso usar `dashboard/index.html` do repositório e criar um novo artifact, e guardar o novo slug em `state.json`).
+5. Publicar com a ferramenta `Artifact` (URL em `state.json` → `dashboard.url`):
+   a. `action:"read"` do URL (sem `path`) e `action:"list"`, `scope:"files"`; confirmar que a página publicada contém o `dashboard/index.html` do repositório e anotar o sha256 do `index.html`. Se a página publicada for diferente, não publicar e avisar o João.
+   b. Copiar `/home/claude/dash/data.js` para a pasta scratchpad da sessão (a ferramenta só aceita ficheiros da pasta de trabalho ou da scratchpad).
+   c. `action:"publish"` com `url`, `file_path` = `dashboard/index.html` do repositório SEM ALTERAÇÕES (nunca a cópia lida do artifact) e `files:{"data.js":"<caminho da cópia>"}`.
+   d. Confirmar com `action:"list"`, `scope:"files"`: o sha256 do `data.js` é o do ficheiro local e o do `index.html` não mudou.
+   Se a publicação for recusada pelo sistema de permissões, não contornar: registar em `state.errors` e avisar o João. Só se o painel tiver sido apagado: criar um novo artifact com `dashboard/index.html` e guardar o novo URL/slug em `state.json`.
 6. `git add dashboard state.json`, commit e push (junto com o passo 4.7).
-Se o painel falhar, não bloqueia o vídeo: registar em `state.errors` e avisar no resumo.
+Se o painel falhar, não desfazer o agendamento do vídeo: registar em `state.errors` e avisar no resumo (e na notificação) que o calendário ficou por publicar. Na execução seguinte, o `data.js` novo inclui o que ficou em atraso; marcar então o erro como resolvido.
 
 ## 5. Fim da série
 `scripts/narr_final.json` só vai até ao vídeo 30. Se `next_video` > 30: não produzir nada; escrever em `state.json` `"status":"sem guiões"` e avisar o utilizador no resumo final para combinar novos guiões/narrações.

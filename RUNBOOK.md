@@ -11,7 +11,7 @@ Conversa com o utilizador em **PT-PT**. Vídeo, legendas e descrição em **PT-B
 - Um vídeo agendado fica sempre **pelo menos ~1 dia à frente**, para o utilizador o poder rever no Buffer e apagar.
 
 ## 1. Preparação (sessão nova)
-1. `add_repo` `proseven222/galo-videos` com `access: push`, clonar para `/home/claude/galo-videos` (clone raso, timeout longo) e `register_repo_root`.
+1. Se `/home/claude/galo-videos` já for um clone de `proseven222/galo-videos`, usá-lo (`git pull --rebase origin main`). Senão: `add_repo` com `access: push` (se a ferramenta existir), clonar para essa pasta (clone raso, timeout longo) e `register_repo_root`. A falta do `add_repo` não é motivo para parar se o clone e o push funcionarem; se o acesso for recusado, não contornar: avisar logo o João.
 2. `bash tools/setup.sh` (copia o kit para `/home/claude/kit`, que é o caminho fixo usado pelos scripts).
 3. Ler `state.json` e `learnings.md`, incluindo o **"Caderno de Regras Ativas"** (R1–R5; só muda com o OK do João): aplica-as todas ao vídeo do dia (ver 3.1, 3.3, 3.5 e 4.3) e regista em "Experiências" que regras estás a testar.
 
@@ -133,7 +133,7 @@ Verificar (obrigatório): **primeiro extrair fotogramas em 0.0 s e 0.1 s e confi
 7. Atualizar `state.json`: `next_video += 1`, `next_publish_date += 1 dia`, adicionar a `published` `{video, date, post_id, hook_style, hook_text}`. Fazer commit e push de `state.json` e `learnings.md`.
 
 ## 4b. Atualizar o calendário (dashboard) — SEMPRE depois de agendar
-**Pedido do João (27/11/2026):** o calendário é publicado em conjunto com os agendamentos dos vídeos. O agendamento só fica concluído depois de o `data.js` estar publicado. Vale para a tarefa diária e para qualquer sessão que crie, altere ou apague um agendamento no Buffer.
+**Pedidos do João (27/11/2026):** o mais importante é o vídeo ficar agendado (sem dias sem vídeo) e o João ser informado disso. O calendário é uma vista visual do que está agendado e para quando: é publicado em conjunto com os agendamentos, mas um problema nele nunca impede nem desfaz o agendamento. Vale para a tarefa diária e para qualquer sessão que crie, altere ou apague um agendamento no Buffer.
 O painel do utilizador é um artifact (slug em `state.json` → `dashboard.artifact_slug`; ficheiros `index.html` + `data.js`). Só o `data.js` muda.
 1. Miniatura: `ffmpeg -y -loglevel error -ss 1.9 -i $W/final.mp4 -frames:v 1 -vf scale=216:-2 -q:v 6 dashboard/thumbs/vNN.jpg`
 2. Acrescentar a `dashboard/posts.json` (lista `posts`) um item: `{"id":"vNN","video":N,"date":"AAAA-MM-DD","time":"18:00","status":"scheduled","title":"<tema curto (local, ano)>","tiktokTitle":"<título do post>","hookStyle":"<estilo>","hookText":"<texto do gancho em maiúsculas>","videoUrl":"<URL raw do GitHub>","bufferPostId":"<id>","duration":<s>,"description":"<descrição completa enviada ao TikTok, com quebras de linha \n>"}`.
@@ -152,6 +152,7 @@ Se o painel falhar, não desfazer o agendamento do vídeo: registar em `state.er
 `scripts/narr_final.json` só vai até ao vídeo 30. Se `next_video` > 30: não produzir nada; escrever em `state.json` `"status":"sem guiões"` e avisar o utilizador no resumo final para combinar novos guiões/narrações.
 
 ## 6. Resumo final (em PT-PT, curto)
+**Na tarefa diária, enviar sempre uma `PushNotification`** (com `<routine_summary>`): primeiro «Vídeo N agendado para DD/MM às 18:00 (tema)», depois até que dia há vídeos agendados no Buffer (confirmar com `list_posts`, estado `scheduled`) e eventuais dias sem vídeo ou posts com erro, e só no fim o estado do calendário. Se o vídeo não ficar agendado, avisar logo, com o motivo e o que é preciso fazer.
 Dizer: vídeo produzido (número e tema), gancho usado e estilo, data/hora agendada, link do post no Buffer, principais conclusões das métricas (se houver) e o que será testado a seguir. Lembrar que o TikTok exige etiqueta de IA (já está ativada no agendamento).
 
 ## Anexo — exemplo no formato atual (vídeo 11, teste de 25/11)

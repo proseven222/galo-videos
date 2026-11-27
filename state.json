@@ -58,7 +58,7 @@
    "step": "calendário (4b.5)",
    "video": 13,
    "error": "Publicação do data.js no artifact recusada pelo classificador de permissões do modo automático (motivo indicado: ação destrutiva ou indesejada). A ferramenta Artifact exige file_path (dashboard/index.html inalterado) junto com files data.js; não se tentou contornar. O painel continua na versão 1795690647-a7f3 (sem o v13). O vídeo está agendado (post 6b095f61658222306c05274f).",
-   "pending": "Com autorização do João: correr python3 tools/dashboard_build.py e publicar o data.js."
+   "resolved": "2026-11-27: publicado a pedido do João (data.js, versão 1795776839-2e3f); index.html inalterado."
   }
  ],
  "dashboard": {

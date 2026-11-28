@@ -1,5 +1,6 @@
 // ═════ FIGURAS (silhuetas sem rosto) ═════
-const ROBES = ['woman', 'monk', 'king', 'priest', 'wizard', 'judge'];
+const ROBES = ['woman', 'monk', 'king', 'priest', 'wizard', 'judge', 'senator'];
+const ROMANS = ['roman', 'general'], LUSOS = ['lusitano', 'viriato'];
 function fig(q, type, x, y, h, o = {}) {
   q.save(); q.translate(x, y); q.scale((o.dir || 1) * h / 112, h / 112);
   const col = o.col || SIL; q.fillStyle = col; q.strokeStyle = col; q.lineCap = 'round'; q.lineJoin = 'round';
@@ -17,6 +18,8 @@ function fig(q, type, x, y, h, o = {}) {
   else { q.lineTo(15, -50); q.lineTo(-15, -50); }
   q.closePath(); q.fill();
   if (type === 'king') { q.beginPath(); q.moveTo(-14, -84); q.lineTo(-30, -6); q.lineTo(-10, -30); q.closePath(); q.fill(); }
+  if (type === 'general' || type === 'viriato') { q.fillStyle = type === 'general' ? '#7a2a18' : '#9a6a1c'; q.beginPath(); q.moveTo(-9, -83); q.quadraticCurveTo(-30 - Math.sin(ph) * 2, -52, -33 - Math.sin(ph * 1.3) * 3, -10); q.lineTo(-13, -22); q.lineTo(-10, -60); q.closePath(); q.fill(); q.fillStyle = col; }
+  if (ROMANS.includes(type) || LUSOS.includes(type)) { q.beginPath(); q.moveTo(-14, -52); q.lineTo(14, -52); q.lineTo(18, -32); q.lineTo(-18, -32); q.closePath(); q.fill(); }
   // cabeça e cobertura
   const hy = -91;
   if (type === 'monk' || type === 'hood' || type === 'wizard') { q.beginPath(); q.moveTo(-12, -80); q.quadraticCurveTo(-14, -104, 0, -112); q.quadraticCurveTo(14, -104, 12, -80); q.closePath(); q.fill(); }
@@ -31,6 +34,10 @@ function fig(q, type, x, y, h, o = {}) {
   else if (type === 'sailor') { q.fillRect(-9, -100, 18, 5); q.beginPath(); q.ellipse(0, -97, 11, 3, 0, 0, 7); q.fill(); }
   else if (type === 'prince') { q.fillRect(-8.5, -101, 17, 4); for (const x of [-6, 0, 6]) { q.beginPath(); q.moveTo(x - 3, -100); q.lineTo(x, -108); q.lineTo(x + 3, -100); q.closePath(); q.fill(); } }
   else if (type === 'judge') { q.fillRect(-9, -101, 18, 5); q.beginPath(); q.ellipse(0, -101, 9, 11, 0, Math.PI, 0); q.fill(); q.beginPath(); q.arc(-8, -90, 5, 0, 7); q.arc(8, -90, 5, 0, 7); q.arc(-9, -83, 4.5, 0, 7); q.arc(9, -83, 4.5, 0, 7); q.fill(); q.fillStyle = '#e8d4a2'; q.beginPath(); q.moveTo(-6, -83); q.lineTo(6, -83); q.lineTo(8, -66); q.lineTo(1.5, -66); q.lineTo(0, -76); q.lineTo(-1.5, -66); q.lineTo(-8, -66); q.closePath(); q.fill(); q.fillStyle = col; }
+  else if (ROMANS.includes(type)) { q.beginPath(); q.arc(0, -93, 9.5, Math.PI, 0); q.fill(); q.fillRect(-10.5, -93.5, 21, 3); q.fillStyle = type === 'general' ? '#c79a38' : '#7a2a18'; q.beginPath(); q.arc(0, -99, type === 'general' ? 15 : 12.5, Math.PI * 1.08, Math.PI * 1.92); q.lineTo(0, -101); q.closePath(); q.fill(); q.fillStyle = col; }
+  else if (type === 'viriato') { q.beginPath(); q.arc(0, -93, 9.5, Math.PI, 0); q.fill(); q.fillRect(-9.5, -93.5, 19, 2.5); q.fillStyle = '#c79a38'; q.beginPath(); q.moveTo(-2, -101); q.quadraticCurveTo(-4, -120 + Math.sin(ph * 1.3) * 2, -24, -108); q.quadraticCurveTo(-12, -108, -9, -97); q.closePath(); q.fill(); q.fillStyle = col; }
+  else if (type === 'lusitano') { q.beginPath(); q.arc(-3, -93, 9, Math.PI * .75, Math.PI * 1.85); q.fill(); q.fillRect(-10, -94, 5, 12); }
+  else if (type === 'senator') { q.fillStyle = '#e8d4a2'; q.beginPath(); q.moveTo(-12, -80); q.lineTo(-5, -84); q.lineTo(15, -34); q.lineTo(13, -6); q.lineTo(6, -30); q.closePath(); q.fill(); q.fillStyle = col; }
   else if (type === 'priest') { q.fillRect(-9, -100, 18, 4); q.fillRect(-6, -108, 12, 8); }
   // braços
   const a = o.arms || (o.prop ? 'hold' : 'down'); q.lineWidth = 6;
@@ -55,7 +62,10 @@ function fig(q, type, x, y, h, o = {}) {
   else if (pr === 'banner') { q.lineWidth = 3.4; q.beginPath(); q.moveTo(26, -2); q.lineTo(26, -150); q.stroke(); q.fillStyle = '#6a4a28'; q.beginPath(); q.moveTo(26, -148); for (let i = 0; i <= 8; i++) q.lineTo(26 + i * 6, -148 + Math.sin(ph * 3 - i * .7) * 4 * i / 8); for (let i = 8; i >= 0; i--) q.lineTo(26 + i * 6, -118 + Math.sin(ph * 3 - i * .7) * 4 * i / 8); q.closePath(); q.fill(); q.fillStyle = col; }
   else if (pr === 'peel') { q.lineWidth = 3; q.beginPath(); q.moveTo(24, -64); q.lineTo(70, -40); q.stroke(); q.beginPath(); q.ellipse(76, -38, 11, 7, .4, 0, 7); q.fill(); }
   else if (pr === 'tool') { q.lineWidth = 3.2; q.beginPath(); q.moveTo(24, -10); q.lineTo(30, -120); q.stroke(); q.beginPath(); q.moveTo(30, -120); q.lineTo(14, -124); q.lineTo(18, -114); q.closePath(); q.fill(); }
+  else if (pr === 'punhal') { q.save(); q.translate(24, -66); q.rotate(o.blade != null ? o.blade : -.35); q.fillStyle = '#efe3bd'; q.strokeStyle = '#1b0f06'; q.lineWidth = 1.4; q.beginPath(); q.moveTo(4, -4); q.lineTo(30, -1); q.lineTo(4, 3.5); q.closePath(); q.fill(); q.stroke(); q.fillStyle = '#c79a38'; q.fillRect(1, -7, 3.5, 13); q.restore(); q.fillStyle = col; }
   else if (pr === 'bag') { q.beginPath(); q.ellipse(24, -52, 9, 11, 0, 0, 7); q.fill(); }
+  if (ROMANS.includes(type) && o.shield !== false) { q.save(); q.translate(-17, -58); q.beginPath(); q.moveTo(-9, -21); q.quadraticCurveTo(0, -26, 9, -21); q.lineTo(9, 21); q.quadraticCurveTo(0, 26, -9, 21); q.closePath(); q.fill(); q.strokeStyle = '#8a6030'; q.lineWidth = 2; q.strokeRect(-5.5, -17, 11, 34); q.fillStyle = '#c79a38'; q.beginPath(); q.arc(0, 0, 3.5, 0, 7); q.fill(); q.restore(); }
+  if (LUSOS.includes(type) && o.shield !== false) { q.save(); q.translate(-17, -60); q.beginPath(); q.arc(0, 0, 14, 0, 7); q.fill(); q.strokeStyle = '#8a6030'; q.lineWidth = 2; q.beginPath(); q.arc(0, 0, 9.5, 0, 7); q.stroke(); q.fillStyle = '#c79a38'; q.beginPath(); q.arc(0, 0, 3.5, 0, 7); q.fill(); q.restore(); }
   if (type === 'soldier' || type === 'knight') { if (o.shield !== false) { q.save(); q.translate(-16, -64); q.beginPath(); q.ellipse(0, 0, 9, 24, 0, 0, 7); q.fill(); q.strokeStyle = '#8a6030'; q.lineWidth = 2; q.beginPath(); q.ellipse(0, 0, 5, 18, 0, 0, 7); q.stroke(); q.restore(); } }
   q.restore();
 }

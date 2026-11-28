@@ -1,0 +1,38 @@
+{"hook": ["HERÓI MORTO PELOS", "PRÓPRIOS COMPANHEIROS?"],
+ "stamp": ["VIRIATO", "CONTRA ROMA"],
+ "tags": [
+  {"at": {"word": "liderava"}, "text": "QUEM PAGOU\nA TRAIÇÃO?", "dur": 2.4, "kind": "t"},
+  {"at": {"word": "151"}, "text": "151 A.C.", "dur": 2.0},
+  {"at": {"word": "escaparam"}, "text": "UM DOS POUCOS\nQUE ESCAPARAM", "dur": 2.4, "kind": "p"},
+  {"at": {"word": "vitória"}, "text": "ROMA VAI\nNEGOCIAR", "dur": 1.9},
+  {"at": {"word": "rejeitou"}, "text": "TRATADO\nREJEITADO", "dur": 2.3, "kind": "p"},
+  {"at": {"word": "subornou"}, "text": "O SUBORNO", "dur": 2.0, "kind": "t"},
+  {"at": {"word": "mataram", "nth": 1}, "text": "TRAÍDO PELOS\nPRÓPRIOS", "dur": 2.8, "kind": "p"}
+ ],
+ "versus": [
+  {"at": {"word": "herói", "nth": 2}, "text": "HERÓI?", "x": 300},
+  {"at": {"word": "mito?"}, "text": "MITO?", "x": 780}
+ ],
+ "versus_end": {"word": "Siga"},
+ "keywords": ["companheiros", "herói", "lusitanos", "roma", "galba", "enganou", "escravos", "escaparam", "revolta", "vitória", "tratado", "rejeitou", "subornou", "mataram", "mito"],
+ "alert_words": ["mataram", "enganou", "escravos", "rejeitou", "subornou"],
+ "sfx": [
+  {"at": 2.9, "kind": "riser", "gain": 0.5},
+  {"at": 15.37, "kind": "clack", "gain": 0.55},
+  {"at": 16.5, "kind": "thump", "gain": 0.5},
+  {"at": 20.71, "kind": "chime", "gain": 0.55},
+  {"at": 24.0, "kind": "horn", "gain": 0.35},
+  {"at": 33.12, "kind": "rustle", "gain": 0.45},
+  {"at": 36.31, "kind": "stab", "gain": 0.55},
+  {"at": 39.7, "kind": "riser", "gain": 0.5},
+  {"at": 41.0, "kind": "chime", "gain": 0.35},
+  {"at": 44.75, "kind": "stab", "gain": 0.65}
+ ],
+ "loops": [
+  {"kind": "step", "from": 40.9, "to": 44.3, "every": 0.6, "accel": 0.88, "min": 0.22, "gain": 0.45},
+  {"kind": "clack", "from": 1.5, "to": 3.0, "every": 0.5, "gain": 0.3}
+ ],
+ "drums": [{"from": 23.9, "to": 26.7}],
+ "music": "tense",
+ "punch_gap": 2.0,
+ "loop_end": true}

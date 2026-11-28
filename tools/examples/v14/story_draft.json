@@ -1,0 +1,915 @@
+{
+ "seed": 141,
+ "twist": {
+  "word": "mataram",
+  "nth": 1
+ },
+ "shots": [
+  {
+   "tpl": "closeup",
+   "cam": "push",
+   "p": {
+    "tod": "night",
+    "icons": [],
+    "bg": "#120c08",
+    "below": [
+     {
+      "n": 2,
+      "spread": 820,
+      "mode": "idle",
+      "types": [
+       "hood"
+      ],
+      "h": 520,
+      "y": 1900,
+      "props": [
+       "punhal"
+      ]
+     }
+    ]
+   },
+   "slam": "traicao",
+   "sec": 1,
+   "b": {
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "sky": "mountains",
+     "gnd": "mud",
+     "actors": [
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "viriato",
+       "x0": 540,
+       "h": 760,
+       "y": 1660,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "hood",
+       "x0": 170,
+       "h": 640,
+       "y": 1680,
+       "dir": 1,
+       "prop": "punhal"
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "hood",
+       "x0": 915,
+       "h": 640,
+       "y": 1680,
+       "dir": -1,
+       "prop": "punhal"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "push",
+   "p": {
+    "tod": "gold",
+    "sky": "mountains",
+    "gnd": "grass",
+    "actors": [
+     {
+      "n": 7,
+      "spread": 900,
+      "mode": "march",
+      "types": [
+       "lusitano"
+      ],
+      "h": 380,
+      "y": 1400,
+      "dir": 1,
+      "prop": "spear"
+     },
+     {
+      "n": 1,
+      "spread": 0,
+      "mode": "point",
+      "type": "viriato",
+      "x0": 540,
+      "h": 820,
+      "y": 1730,
+      "dir": 1
+     }
+    ]
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "landscape",
+    "cam": "panR",
+    "p": {
+     "tod": "grey",
+     "sky": "plain",
+     "gnd": "mud",
+     "actors": [
+      {
+       "n": 5,
+       "spread": 520,
+       "mode": "march",
+       "types": [
+        "roman"
+       ],
+       "x0": 790,
+       "h": 470,
+       "y": 1600,
+       "dir": -1,
+       "prop": "spear"
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "point",
+       "type": "viriato",
+       "x0": 200,
+       "h": 700,
+       "y": 1720,
+       "dir": 1
+      }
+     ],
+     "props": [
+      {
+       "t": "icon",
+       "n": "estandarte",
+       "x": 0.8,
+       "y": 850,
+       "s": 1.35
+      }
+     ]
+    },
+    "at": {
+     "word": "contra",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "dots": [
+      {
+       "x": 0.34,
+       "y": 0.56,
+       "r": 0.15,
+       "n": 70,
+       "sp": 1.6
+      }
+     ],
+     "icons": [
+      {
+       "n": "escudo",
+       "x": 0.34,
+       "y": 0.56,
+       "s": 0.95
+      }
+     ]
+    },
+    "at": {
+     "word": "século",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "dawn",
+    "sky": "plain",
+    "gnd": "sand",
+    "actors": [
+     {
+      "n": 4,
+      "spread": 800,
+      "mode": "idle",
+      "types": [
+       "roman"
+      ],
+      "h": 420,
+      "y": 1560,
+      "prop": "spear"
+     }
+    ],
+    "props": [
+     {
+      "t": "tent",
+      "x": 0.22,
+      "y": 1330,
+      "s": 1.1
+     },
+     {
+      "t": "tent",
+      "x": 0.8,
+      "y": 1300,
+      "s": 0.9
+     },
+     {
+      "t": "icon",
+      "n": "estandarte",
+      "x": 0.52,
+      "y": 900,
+      "s": 1.7
+     }
+    ]
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "interior",
+    "cam": "drift",
+    "p": {
+     "kind": "hall",
+     "tod": "day",
+     "actors": [
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "wave",
+       "type": "general",
+       "x0": 760,
+       "h": 880,
+       "y": 1700,
+       "dir": -1
+      },
+      {
+       "n": 3,
+       "spread": 300,
+       "mode": "idle",
+       "types": [
+        "lusitano"
+       ],
+       "x0": 240,
+       "h": 560,
+       "y": 1700,
+       "dir": 1
+      }
+     ],
+     "table": 0,
+     "shaft": 1
+    },
+    "at": {
+     "word": "general",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "fire",
+     "icons": [
+      {
+       "n": "espadas",
+       "s": 2.1,
+       "y": 0.12
+      }
+     ],
+     "bg": "#1a0603"
+    },
+    "at": {
+     "word": "matou",
+     "nth": 0
+    }
+   },
+   "d": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "grilhoes",
+       "s": 2.0,
+       "y": 0.22
+      }
+     ],
+     "bg": "#120c08",
+     "below": [
+      {
+       "n": 4,
+       "spread": 760,
+       "mode": "kneel",
+       "types": [
+        "lusitano",
+        "woman"
+       ],
+       "h": 470,
+       "y": 1860,
+       "shield": false
+      }
+     ]
+    },
+    "at": {
+     "word": "vendeu",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "night",
+    "sky": "forest",
+    "gnd": "mud",
+    "actors": [
+     {
+      "n": 1,
+      "spread": 0,
+      "mode": "run",
+      "type": "viriato",
+      "x0": 470,
+      "h": 720,
+      "y": 1690,
+      "dir": 1
+     }
+    ],
+    "fire": 1,
+    "smoke": 0.2
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "landscape",
+    "cam": "push",
+    "p": {
+     "tod": "dawn",
+     "sky": "mountains",
+     "gnd": "grass",
+     "actors": [
+      {
+       "n": 8,
+       "spread": 940,
+       "mode": "cheer",
+       "types": [
+        "lusitano"
+       ],
+       "h": 440,
+       "y": 1560,
+       "prop": "spear"
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "up",
+       "type": "viriato",
+       "x0": 540,
+       "h": 840,
+       "y": 1750,
+       "dir": 1
+      }
+     ]
+    },
+    "at": {
+     "word": "E",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "panR",
+   "p": {
+    "tod": "day",
+    "sky": "plain",
+    "gnd": "sand",
+    "actors": [
+     {
+      "n": 5,
+      "spread": 420,
+      "mode": "march",
+      "types": [
+       "lusitano"
+      ],
+      "x0": 260,
+      "h": 500,
+      "y": 1620,
+      "dir": 1,
+      "prop": "spear"
+     },
+     {
+      "n": 4,
+      "spread": 300,
+      "mode": "run",
+      "types": [
+       "roman"
+      ],
+      "x0": 900,
+      "h": 430,
+      "y": 1540,
+      "dir": 1
+     }
+    ],
+    "smoke": 0.25
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "capromano",
+       "s": 2.2,
+       "y": 0.1
+      },
+      {
+       "n": "capromano",
+       "s": 1.0,
+       "x": -0.68,
+       "y": 0.62,
+       "rot": -0.5
+      },
+      {
+       "n": "capromano",
+       "s": 1.0,
+       "x": 0.68,
+       "y": 0.62,
+       "rot": 0.5
+      }
+     ]
+    },
+    "at": {
+     "word": "comandantes",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "map",
+    "cam": "push",
+    "p": {
+     "land": [
+      {
+       "n": "iberia",
+       "x": 0.04,
+       "y": 0.3,
+       "w": 0.92,
+       "h": 0.9
+      }
+     ],
+     "routes": [
+      {
+       "pts": [
+        [
+         0.34,
+         0.58
+        ],
+        [
+         0.55,
+         0.52
+        ],
+        [
+         0.76,
+         0.5
+        ]
+       ],
+       "dur": 0.8
+      }
+     ],
+     "icons": [
+      {
+       "n": "escudo",
+       "x": 0.3,
+       "y": 0.58,
+       "s": 0.75
+      },
+      {
+       "n": "estandarte",
+       "x": 0.79,
+       "y": 0.47,
+       "s": 0.95
+      }
+     ]
+    },
+    "at": {
+     "word": "Em",
+     "nth": 0
+    }
+   },
+   "d": {
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "council",
+     "tod": "day",
+     "actors": [
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "point",
+       "type": "viriato",
+       "x0": 280,
+       "h": 780,
+       "y": 1640,
+       "dir": 1
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "general",
+       "x0": 800,
+       "h": 780,
+       "y": 1640,
+       "dir": -1
+      }
+     ],
+     "table": 1,
+     "ty": 1480,
+     "items": [
+      {
+       "n": "tratado",
+       "x": 0.5,
+       "s": 0.9,
+       "up": 90
+      }
+     ]
+    },
+    "at": {
+     "word": "vitória",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "closeup",
+   "cam": "drift",
+   "p": {
+    "tod": "gold",
+    "icons": [
+     {
+      "n": "tratado",
+      "s": 2.2,
+      "y": 0.15
+     }
+    ]
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "landscape",
+    "cam": "panL",
+    "p": {
+     "tod": "gold",
+     "sky": "huts",
+     "gnd": "grass",
+     "actors": [
+      {
+       "n": 5,
+       "spread": 820,
+       "mode": "wave",
+       "types": [
+        "lusitano",
+        "woman"
+       ],
+       "h": 430,
+       "y": 1540,
+       "shield": false
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "viriato",
+       "x0": 540,
+       "h": 720,
+       "y": 1730,
+       "dir": 1
+      }
+     ],
+     "birds": 3
+    },
+    "at": {
+     "word": "autonomia",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "interior",
+    "cam": "push",
+    "p": {
+     "kind": "court",
+     "tod": "night",
+     "actors": [
+      {
+       "n": 2,
+       "spread": 220,
+       "mode": "point",
+       "types": [
+        "senator"
+       ],
+       "x0": 190,
+       "h": 660,
+       "y": 1680,
+       "dir": 1
+      },
+      {
+       "n": 2,
+       "spread": 220,
+       "mode": "point",
+       "types": [
+        "senator"
+       ],
+       "x0": 890,
+       "h": 660,
+       "y": 1680,
+       "dir": -1
+      }
+     ],
+     "table": 0
+    },
+    "at": {
+     "word": "Mas",
+     "nth": 0
+    }
+   },
+   "d": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "tratadorasgado",
+       "s": 2.15,
+       "y": 0.15
+      }
+     ],
+     "bg": "#120c08"
+    },
+    "at": {
+     "word": "rejeitou",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "push",
+   "p": {
+    "tod": "storm",
+    "sky": "plain",
+    "gnd": "mud",
+    "actors": [
+     {
+      "n": 1,
+      "spread": 0,
+      "mode": "point",
+      "type": "general",
+      "x0": 540,
+      "h": 900,
+      "y": 1720,
+      "dir": -1
+     },
+     {
+      "n": 2,
+      "spread": 800,
+      "mode": "idle",
+      "types": [
+       "roman"
+      ],
+      "h": 460,
+      "y": 1500,
+      "prop": "spear"
+     }
+    ],
+    "clouds": 1
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "bolsa",
+       "s": 2.0,
+       "x": -0.04,
+       "y": 0.06
+      }
+     ],
+     "bg": "#120c08",
+     "below": [
+      {
+       "n": 3,
+       "spread": 700,
+       "mode": "idle",
+       "types": [
+        "hood"
+       ],
+       "h": 540,
+       "y": 1860
+      }
+     ]
+    },
+    "at": {
+     "word": "subornou",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "landscape",
+    "cam": "panR",
+    "p": {
+     "tod": "dusk",
+     "sky": "mountains",
+     "gnd": "sand",
+     "actors": [
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "march",
+       "type": "hood",
+       "x0": 215,
+       "h": 800,
+       "y": 1750,
+       "dir": 1,
+       "prop": "punhal"
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "march",
+       "type": "hood",
+       "x0": 470,
+       "h": 640,
+       "y": 1610,
+       "dir": 1,
+       "prop": "punhal"
+      },
+      {
+       "n": 1,
+       "spread": 0,
+       "mode": "idle",
+       "type": "hood",
+       "x0": 930,
+       "h": 560,
+       "y": 1560,
+       "dir": -1,
+       "prop": "punhal"
+      }
+     ],
+     "props": [
+      {
+       "t": "tent",
+       "x": 0.66,
+       "y": 1330,
+       "s": 1.7
+      }
+     ]
+    },
+    "at": {
+     "word": "Segundo",
+     "nth": 0
+    }
+   },
+   "d": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "fire",
+     "icons": [
+      {
+       "n": "queda",
+       "s": 2.25,
+       "y": 0.16
+      }
+     ],
+     "bg": "#1a0603"
+    },
+    "at": {
+     "word": "mataram",
+     "nth": 0
+    }
+   }
+  },
+  {
+   "tpl": "landscape",
+   "cam": "drift",
+   "p": {
+    "tod": "grey",
+    "sky": "mountains",
+    "gnd": "mud",
+    "actors": [
+     {
+      "n": 1,
+      "spread": 0,
+      "mode": "idle",
+      "type": "viriato",
+      "x0": 540,
+      "h": 760,
+      "y": 1720,
+      "dir": 1
+     }
+    ],
+    "fogA": 0.4,
+    "props": [
+     {
+      "t": "icon",
+      "n": "question",
+      "x": 0.8,
+      "y": 900,
+      "s": 1.5
+     }
+    ]
+   },
+   "sec": 1,
+   "b": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "gold",
+     "icons": [
+      {
+       "n": "estatua",
+       "s": 2.1,
+       "y": 0.18
+      }
+     ],
+     "below": [
+      {
+       "n": 4,
+       "spread": 820,
+       "mode": "cheer",
+       "types": [
+        "man",
+        "woman",
+        "scholar"
+       ],
+       "h": 380,
+       "y": 1940
+      }
+     ]
+    },
+    "at": {
+     "word": "fama",
+     "nth": 0
+    }
+   },
+   "c": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "dusk",
+     "icons": [
+      {
+       "n": "estatua",
+       "s": 1.25,
+       "x": -0.55,
+       "y": 0.18
+      },
+      {
+       "n": "question",
+       "s": 1.35,
+       "x": 0.56,
+       "y": 0.16
+      }
+     ]
+    },
+    "at": {
+     "word": "Herói",
+     "nth": 1
+    }
+   },
+   "d": {
+    "tpl": "closeup",
+    "cam": "push",
+    "p": {
+     "tod": "night",
+     "icons": [
+      {
+       "n": "traicao",
+       "s": 2.0,
+       "y": 0.42
+      }
+     ],
+     "bg": "#120c08"
+    },
+    "at": {
+     "word": "Conte",
+     "nth": 0
+    }
+   }
+  }
+ ]
+}

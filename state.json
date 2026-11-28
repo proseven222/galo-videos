@@ -1,6 +1,6 @@
 {
- "next_video": 14,
- "next_publish_date": "2026-11-30",
+ "next_video": 15,
+ "next_publish_date": "2026-12-01",
  "timezone": "Europe/Lisbon",
  "publish_time": "18:00",
  "buffer_channel_id": "6b059f178541f09ecb8a802e",
@@ -50,6 +50,15 @@
    "hook_text": "COROADA JÁ MORTA? / NÃO HÁ FONTES",
    "file": "videos/galo_ines_de_castro_v13.mp4",
    "note": "R1-R5 + abertura 3.1.1 OK; selo INÊS DE CASTRO · EXECUTADA EM 1355; 29 planos (média 1,9 s); coroa desfaz-se na reviravolta; dark + sino + pizzicato; 54,7 s, -1,5 dBTP, 64 MB"
+  },
+  {
+   "video": 14,
+   "date": "2026-11-30",
+   "post_id": "6b0aaf48039273f88fc08cd3",
+   "hook_style": "A-pergunta chocante",
+   "hook_text": "HERÓI MORTO PELOS / PRÓPRIOS COMPANHEIROS?",
+   "file": "videos/galo_viriato_v14.mp4",
+   "note": "R1-R5 + abertura 3.1.1 OK; selo VIRIATO · CONTRA ROMA; 27 planos (média 2,2 s, máx. 3,8 s); punhais avançam e o capacete cai na reviravolta ('mataram', 44,7 s); tense + passos a acelerar + punhais; 58,5 s, -1,6 dBTP, 68 MB"
   }
  ],
  "errors": [
